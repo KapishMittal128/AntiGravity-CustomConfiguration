@@ -1,0 +1,125 @@
+{
+    "version": "3.0.0",
+    "total_skills": 17,
+    "skills": [
+        {
+            "id": "api-design-principles",
+            "name": "Api Design Principles",
+            "description": "Standards for REST, GraphQL, and RPC interface design. Focuses on developer experience and long-term stability. Use when designing new API surfaces.",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/api-design-principles/SKILL.md"
+        },
+        {
+            "id": "backend-dev-guidelines",
+            "name": "Backend Dev Guidelines",
+            "description": "Core standards for backend engineering. Focuses on performance, security, and maintainable service architecture. Use when building APIs, background workers, or data services.",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/backend-dev-guidelines/SKILL.md"
+        },
+        {
+            "id": "caveman-mode",
+            "name": "Caveman Mode",
+            "description": ">",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/caveman-mode/SKILL.md"
+        },
+        {
+            "id": "frontend-architecture-patterns",
+            "name": "Frontend Architecture Patterns",
+            "description": "Advanced structural patterns for Landing Pages, SaaS apps, and Data Visualization. Use when determining the macro-level layout, conversion flows, and ergonomic hierarchy of a new frontend project.",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/frontend-architecture-patterns/SKILL.md"
+        },
+        {
+            "id": "huashu-deck-pdf-export",
+            "name": "Huashu Deck Pdf Export",
+            "description": "PDF generation from web layouts",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/huashu-deck-pdf-export/SKILL.md"
+        },
+        {
+            "id": "huashu-html-to-pptx-conversion",
+            "name": "Huashu Html To Pptx Conversion",
+            "description": "PPTX generation from web data payloads",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/huashu-html-to-pptx-conversion/SKILL.md"
+        },
+        {
+            "id": "huashu-video-rendering",
+            "name": "Huashu Video Rendering",
+            "description": "Rendering React/Remotion sequences to MP4.",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/huashu-video-rendering/SKILL.md"
+        },
+        {
+            "id": "react-performance-optimizations",
+            "name": "React Performance Optimizations",
+            "description": "Techniques for Virtualization, Memoization, and RSC logic. Use when optimizing a sluggish React app or refactoring to server components.",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/react-performance-optimizations/SKILL.md"
+        },
+        {
+            "id": "remotion-composition-metadata",
+            "name": "Remotion Composition Metadata",
+            "description": "Defining frame-rate, duration, and dimensions.",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/remotion-composition-metadata/SKILL.md"
+        },
+        {
+            "id": "remotion-dynamic-frame-logic",
+            "name": "Remotion Dynamic Frame Logic",
+            "description": "Interpolating values based on frame index.",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/remotion-dynamic-frame-logic/SKILL.md"
+        },
+        {
+            "id": "remotion-sequence-timing",
+            "name": "Remotion Sequence Timing",
+            "description": "Managing layered sequences and delays.",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/remotion-sequence-timing/SKILL.md"
+        },
+        {
+            "id": "remotion-video-config-context",
+            "name": "Remotion Video Config Context",
+            "description": "",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/remotion-video-config-context/SKILL.md"
+        },
+        {
+            "id": "remotion-video-template",
+            "name": "Remotion Video Template",
+            "description": "A full, production-ready Remotion video component.",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/remotion-video-template/SKILL.md"
+        },
+        {
+            "id": "remotion-web-player-integration",
+            "name": "Remotion Web Player Integration",
+            "description": "Embedding videos in React with @remotion/player.",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/remotion-web-player-integration/SKILL.md"
+        },
+        {
+            "id": "repo-analysis",
+            "name": "Repo Analysis",
+            "description": "Techniques for deep-diving into unknown codebases. Focuses on dependency graphs, data flow, and architectural patterns. Use when starting a task in an unfamiliar project.",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/repo-analysis/SKILL.md"
+        },
+        {
+            "id": "spec-driven-build",
+            "name": "Spec Driven Build",
+            "description": "Methodology for transforming a technical specification into a verified implementation plan. Use when starting non-trivial features.",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/spec-driven-build/SKILL.md"
+        },
+        {
+            "id": "ui-design-expert",
+            "name": "Ui Design Expert",
+            "description": "Ultimate aesthetic filter for premium UI. Combines bold design thinking, Antigravity spatial depth, and production-hardened engineering. Use when building web components, pages, or immersive interactive applications.",
+            "source_reference": "internal:antigravity-core",
+            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/ui-design-expert/SKILL.md"
+        }
+    ]
+}
