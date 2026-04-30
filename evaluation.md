@@ -15,7 +15,7 @@ Antigravity is now a compact operating layer with:
 - one runtime control file: `.agents/skills/RUNTIME_CONTROL.md`
 - one orchestration file: `.agents/skills/SYSTEM_ORCHESTRATION.md`
 - one routing index: `.agents/skills/CAPABILITIES.md`
-- one normalized live skill library: 32 skills
+- one normalized live skill library: 21 skills
 - one machine-readable config mirror: `settings.json`
 
 The system is substantially leaner and more internally consistent than the earlier mixed-format state.

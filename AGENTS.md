@@ -126,8 +126,14 @@ This section governs what gets loaded into context. Every item loaded has a cost
 
 - Do NOT pre-read all agent files at session start
 - Do NOT pre-read all rule files at session start
-- Do NOT load all 21 Master Skills for orientation
+- Do NOT load all 21 skills for orientation
 - Do NOT read AGENTS.md sections irrelevant to the current task
+
+### Context Hygiene & Intelligence Guardrail (40% Rule)
+
+Claude's reasoning peaks before 40% context usage and degrades significantly after 60%.
+- **Proactive Compaction:** If context exceeds 40% and a high-intelligence task (Architecture, Debugging, Logic) is required, proactively suggest `/compact` or use a sub-agent to isolate the work.
+- **Rewind > Correct:** If an implementation fails, prefer `/rewind` or a fresh context over "patching the patch." History pollution leads to reasoning "slop."
 
 ### Skill Loading Protocol
 

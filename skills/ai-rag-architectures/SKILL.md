@@ -133,6 +133,9 @@ Model context window:  128K tokens (example)
 3. **Cost Runaway Patch**: Set hard limits on document corpus size and per-query token budgets. Alert when approaching limits.
 4. **Self-Rejection Clause**: If the embedding model dimension or vector DB type cannot be determined, **ABORT OUTPUT** and emit: *"REJECTED: Cannot design RAG pipeline without knowing the embedding model and vector store."*
 
+## Output Format / Delivery
+- Output should be a structured architectural spec or pipeline components.
+
 ## Maintenance Notes
 - Created 2026-04-30 as part of the Strategic Gap analysis.
 - Complements the `ai-engineer` agent (which orchestrates AI features) with specialized RAG architecture patterns.

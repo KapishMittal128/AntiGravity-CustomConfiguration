@@ -100,7 +100,7 @@
   },
   "commands": {
     "directory": ".agents/commands",
-    "available": ["fix-issue", "build-feature", "review-code", "refactor", "ship-ui", "research", "caveman", "brainstorm", "execute-plan", "write-plan"],
+    "available": ["fix-issue", "build-feature", "review-code", "refactor", "ship-ui", "research", "brainstorm", "execute-plan", "write-plan"],
     "slashBridge": {
       "enabled": true,
       "description": "Slash-prefixed prompts (e.g. /build-feature) are automatically routed to .agents/commands/<name>.md via AGENTS.md Section 6A.",

@@ -49,7 +49,7 @@ Global execution kernel for high-end software engineering.
 ## 2. CORE FILES
 
 - **`AGENTS.md`**: The OS Constitution. Defines routing, complexity gate, and safety tiers.
-- **`GEMINI.md`**: Force-injected authority rules (User Rules). Synchronized with kernel.
+- **`../GEMINI.md`**: Force-injected authority rules (User Rules). Synchronized with kernel.
 - **`settings.json`**: Machine-readable config for auto-execution and behavior flags.
 - **`SKILLS_REGISTRY.json`**: Hard-coded list of active skills to prevent ghost loading.
 - **`validate_agents.py`**: Integrity checker for the global registry.

@@ -45,6 +45,7 @@ ALLOWED_CATEGORIES = {
     "research",
     "design",
     "growth",
+    "ai",
 }
 ALLOWED_NON_SKILL_TOKENS = {
     "build-feature",

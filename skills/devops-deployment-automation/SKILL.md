@@ -3,7 +3,7 @@ name: devops-deployment-automation
 description: Dockerization, CI/CD pipelines (GitHub Actions), deployment targets (Vercel, AWS, Railway), and environment management. Use when containerizing apps, setting up automated pipelines, or configuring production deployments.
 version: "1.0.0"
 verified_date: 2026-04-30
-category: infrastructure
+category: infra
 ---
 
 # DevOps & Deployment Automation
@@ -76,6 +76,9 @@ Do NOT use when:
 2. **Always include `.dockerignore`** alongside any Dockerfile.
 3. **Always include `.env.example`** when env vars are required.
 4. **Deployments must be reproducible** — same commit = same deployment.
+
+## Output Format / Delivery
+- Output is deployment config code (Dockerfiles, YMLs) and step-by-step CI/CD pipeline logic.
 
 ## Safety Guardrails
 1. **Secret Exposure Patch**: Verify no secret values in plain text. Use `${{ secrets.NAME }}`.

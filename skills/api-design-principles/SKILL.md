@@ -29,5 +29,8 @@ Use during the PLANNING phase of any feature involving a new or modified API end
 2. **Fail Gracefully**. Provide clear, actionable error messages.
 3. **No Over-fetching**. Return only the data the client needs.
 
+## Output Format / Delivery
+- Outputs should be structured API schemas, interfaces, or documented endpoints.
+
 ## Maintenance Notes
 - Initial global core skill.
