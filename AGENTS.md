@@ -126,7 +126,7 @@ This section governs what gets loaded into context. Every item loaded has a cost
 
 - Do NOT pre-read all agent files at session start
 - Do NOT pre-read all rule files at session start
-- Do NOT load all 17 Master Skills for orientation
+- Do NOT load all 21 Master Skills for orientation
 - Do NOT read AGENTS.md sections irrelevant to the current task
 
 ### Skill Loading Protocol
@@ -449,6 +449,10 @@ UI polish           → frontend           → ship-ui           → frontend
 Code review         → reviewer           → review-code       → all
 Refactoring         → reviewer           → refactor          → all
 AI feature          → ai-engineer        → build-feature     → backend
+RAG / embeddings    → ai-engineer        → build-feature     → backend
+Testing / QA        → debugger/backend   → review-code       → done-criteria
+DB / ORM / migrate  → backend            → build-feature     → database
+Docker / CI / deploy→ backend            → build-feature     → backend
 Architecture        → planner            → —                 → all
 Tech decision       → planner            → research          → —
 

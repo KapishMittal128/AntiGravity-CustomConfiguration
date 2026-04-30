@@ -34,3 +34,37 @@ Launch preparation, marketing copy, content strategy, and technical SEO.
 
 ### 11. Security & Production Review (`security/`, `audit/`, `scale/`)
 Concurrency safety, race conditions, IDOR prevention, abuse resistance, and scaling bottlenecks.
+
+### 12. AI / ML / LLM (`ai/`, `rag/`, `embeddings/`)
+RAG pipelines, vector databases, embedding strategies, LLM orchestration, prompt engineering, and AI agent architectures.
+
+### 13. Testing & Quality (`testing/`, `qa/`)
+Unit, integration, and E2E testing patterns. TDD workflows, mocking strategies, and coverage analysis.
+
+---
+
+## Current Skill → Category Mapping
+
+| Skill | Category |
+|-------|----------|
+| `api-design-principles` | Backend / API |
+| `backend-dev-guidelines` | Backend / API |
+| `caveman-mode` | Core Engineering |
+| `repo-analysis` | Research / Analysis |
+| `spec-driven-build` | Core Engineering |
+| `testing-quality-engineering` | Testing & Quality |
+| `devops-deployment-automation` | Infra / Deploy |
+| `frontend-architecture-patterns` | Frontend / Website |
+| `ui-design-expert` | Design / UX |
+| `modern-database-orchestration` | Database / Data |
+| `ai-rag-architectures` | AI / ML / LLM |
+| `react-performance-optimizations` | Frontend / Website |
+| `huashu-deck-pdf-export` | Integrations / Automation |
+| `huashu-html-to-pptx-conversion` | Integrations / Automation |
+| `huashu-video-rendering` | Integrations / Automation |
+| `remotion-composition-metadata` | Integrations / Automation |
+| `remotion-dynamic-frame-logic` | Integrations / Automation |
+| `remotion-sequence-timing` | Integrations / Automation |
+| `remotion-video-config-context` | Integrations / Automation |
+| `remotion-video-template` | Integrations / Automation |
+| `remotion-web-player-integration` | Integrations / Automation |

@@ -44,9 +44,9 @@ If a prompt is incomplete, overly broad, multi-intent, or doesn't map to a clear
 ## 7. Phase Sequencing Rules
 Antigravity must sequence work strictly across the following operational phases in order:
 1.  **PLANNING:** `repo-analysis`, `spec-driven-build`, `api-design-principles`. MUST occur before implementation.
-2.  **BUILD:** `backend-dev-guidelines`, `ui-design-expert`. Actual file mutation phase.
-3.  **AUDIT:** `repo-analysis`. MUST occur after BUILD but before SHIP.
-4.  **SHIP:** `backend-dev-guidelines`.
+2.  **BUILD:** `backend-dev-guidelines`, `ui-design-expert`, `modern-database-orchestration`, `ai-rag-architectures`. Actual file mutation phase.
+3.  **AUDIT:** `repo-analysis`, `testing-quality-engineering`. MUST occur after BUILD but before SHIP.
+4.  **SHIP:** `backend-dev-guidelines`, `devops-deployment-automation`.
 
 ## 8. "Stop Conditions" & Runtime Discipline
 While this document defines *when* skills stop naturally, the **physical enforcement** of cycle limits and context boundaries is governed by the global RUNTIME_CONTROL logic.
@@ -87,6 +87,21 @@ Reusable orchestration sequences for Antigravity:
 1. `spec-driven-build` (Resource allocation plan, Model/Data validation)
 2. `backend-dev-guidelines` (Pipeline execution)
 3. `ui-design-expert` (User input wiring)
+
+### F. RAG System Build Flow
+1. `repo-analysis` (Existing data source audit)
+2. `spec-driven-build` (Pipeline architecture spec)
+3. `ai-rag-architectures` (Chunking, embedding, vector store setup)
+4. `backend-dev-guidelines` (API endpoints for ingestion and query)
+5. `testing-quality-engineering` (Retrieval quality evaluation)
+
+### G. Full-Stack SaaS Deploy Flow
+1. `spec-driven-build` (Feature spec)
+2. `modern-database-orchestration` (Schema + migrations)
+3. `backend-dev-guidelines` (Service layer)
+4. `ui-design-expert` (Frontend)
+5. `testing-quality-engineering` (Test suite)
+6. `devops-deployment-automation` (Docker + CI/CD + deploy)
 
 ## 10. Global Execution Protocol (MANDATORY GATE)
 Before generating ANY output based on a skill module, the OS MUST run this exact sequence internally:
