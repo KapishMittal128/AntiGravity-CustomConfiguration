@@ -1,4 +1,6 @@
-# <p align="center"><img src="https://raw.githubusercontent.com/google/material-design-icons/master/png/action/settings_input_component/black/xxhdpi.png" width="32" height="32" /> Antigravity OS — Production Engine</p>
+<p align="center">
+  <img src="logo.svg" alt="Antigravity OS Logo" width="100%" />
+</p>
 
 <p align="center">
   <a href="https://github.com/KapishMittal128/AntiGravity-CustomConfiguration"><img src="https://img.shields.io/badge/Antigravity_OS-v3.0.0-blueviolet?style=for-the-badge&logo=google" /></a>
