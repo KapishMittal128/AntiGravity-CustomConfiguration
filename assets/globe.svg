@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="200" height="200">
+  <defs>
+    <style>
+      @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+      .ring { fill: none; stroke-width: 1.2; }
+      .meridian-group { transform-origin: 200px 200px; animation: rotate 12s linear infinite; }
+      .meridian-group-reverse { transform-origin: 200px 200px; animation: rotate 18s linear infinite reverse; }
+      .glow { animation: pulse 4s ease-in-out infinite; }
+    </style>
+    <radialGradient id="globe-bg" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#2d1b69" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#1a1a2e" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0D0D0D" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="ring-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6D28D9"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    <linearGradient id="ring-grad-2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#6D28D9"/>
+    </linearGradient>
+    <linearGradient id="ring-grad-3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="#0D0D0D" rx="0"/>
+
+  <!-- Outer glow -->
+  <circle cx="200" cy="200" r="130" fill="none" stroke="#6D28D9" stroke-width="0.5" opacity="0.3" class="glow"/>
+  <circle cx="200" cy="200" r="145" fill="none" stroke="#EC4899" stroke-width="0.3" opacity="0.2" class="glow"/>
+
+  <!-- Globe body -->
+  <circle cx="200" cy="200" r="120" fill="url(#globe-bg)" stroke="url(#ring-grad-1)" stroke-width="1.5"/>
+
+  <!-- Latitude lines (static) -->
+  <ellipse cx="200" cy="200" rx="120" ry="20" class="ring" stroke="#6D28D9" opacity="0.4"/>
+  <ellipse cx="200" cy="200" rx="120" ry="50" class="ring" stroke="#6D28D9" opacity="0.35"/>
+  <ellipse cx="200" cy="200" rx="120" ry="85" class="ring" stroke="#6D28D9" opacity="0.3"/>
+  <ellipse cx="200" cy="200" rx="120" ry="120" class="ring" stroke="#6D28D9" opacity="0.25"/>
+
+  <!-- Rotating meridian set 1 -->
+  <g class="meridian-group">
+    <ellipse cx="200" cy="200" rx="30" ry="120" class="ring" stroke="url(#ring-grad-1)" opacity="0.6"/>
+    <ellipse cx="200" cy="200" rx="70" ry="120" class="ring" stroke="url(#ring-grad-2)" opacity="0.5"/>
+    <ellipse cx="200" cy="200" rx="105" ry="120" class="ring" stroke="url(#ring-grad-3)" opacity="0.4"/>
+  </g>
+
+  <!-- Rotating meridian set 2 (reverse, offset) -->
+  <g class="meridian-group-reverse">
+    <ellipse cx="200" cy="200" rx="50" ry="120" class="ring" stroke="url(#ring-grad-3)" opacity="0.35"/>
+    <ellipse cx="200" cy="200" rx="90" ry="120" class="ring" stroke="url(#ring-grad-1)" opacity="0.3"/>
+  </g>
+
+  <!-- Center dot cluster -->
+  <circle cx="200" cy="200" r="4" fill="#EC4899" opacity="0.9" class="glow"/>
+  <circle cx="200" cy="200" r="8" fill="none" stroke="#EC4899" stroke-width="0.8" opacity="0.5" class="glow"/>
+
+  <!-- Axis line -->
+  <line x1="200" y1="70" x2="200" y2="330" stroke="#6D28D9" stroke-width="0.6" opacity="0.3"/>
+
+  <!-- Orbital dots -->
+  <g class="meridian-group">
+    <circle cx="200" cy="80" r="3" fill="#10B981" opacity="0.8"/>
+    <circle cx="320" cy="200" r="2.5" fill="#3B82F6" opacity="0.7"/>
+    <circle cx="200" cy="320" r="3" fill="#EC4899" opacity="0.8"/>
+    <circle cx="80" cy="200" r="2.5" fill="#F59E0B" opacity="0.7"/>
+  </g>
+</svg>

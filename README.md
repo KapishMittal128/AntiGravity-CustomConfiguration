@@ -4,33 +4,39 @@
 
 <br/>
 
-<a href="https://github.com/KapishMittal128/AntiGravity-CustomConfiguration"><img src="https://img.shields.io/badge/Kernel-v3.0.0-6D28D9?style=for-the-badge&logo=atom&logoColor=white" /></a>
-<img src="https://img.shields.io/badge/Skills-40_Active-10B981?style=for-the-badge&logo=stackblitz&logoColor=white" />
-<img src="https://img.shields.io/badge/Validator-0_Errors-059669?style=for-the-badge&logo=checkmarx&logoColor=white" />
-<img src="https://img.shields.io/badge/Target-60_FPS-EC4899?style=for-the-badge&logo=speedtest&logoColor=white" />
-<img src="https://img.shields.io/badge/WCAG-AA_Compliant-3B82F6?style=for-the-badge&logo=accessibility&logoColor=white" />
+<img src="https://raw.githubusercontent.com/KapishMittal128/AntiGravity-CustomConfiguration/main/assets/globe.svg" width="200" height="200" />
+
+<br/><br/>
+
+<img src="https://img.shields.io/badge/Full--Stack_Architecture-Ship_Frontend_%26_Backend-6D28D9?style=for-the-badge&logo=vercel&logoColor=white" />
+<img src="https://img.shields.io/badge/AI%2FRAG_Pipelines-Vector_Search_%26_Embeddings-EC4899?style=for-the-badge&logo=openai&logoColor=white" />
+<img src="https://img.shields.io/badge/Production_Databases-Postgres_%7C_Prisma_%7C_Drizzle-10B981?style=for-the-badge&logo=postgresql&logoColor=white" />
+<br/>
+<img src="https://img.shields.io/badge/3D_%26_Motion-Three.js_%7C_GSAP_%7C_Framer-3B82F6?style=for-the-badge&logo=threedotjs&logoColor=white" />
+<img src="https://img.shields.io/badge/CI%2FCD_%26_DevOps-Docker_%7C_Vercel_%7C_Railway-F59E0B?style=for-the-badge&logo=docker&logoColor=white" />
+<img src="https://img.shields.io/badge/40_Loaded_Skills-Lazy--Load_On_Demand-059669?style=for-the-badge&logo=stackblitz&logoColor=white" />
 
 <br/><br/>
 
 <samp>
 <b>Turn any language model into a disciplined software build system.</b>
 <br/>
-Awwwards-caliber frontends · Production-grade backends · AI/RAG pipelines · Zero slop.
+Awwwards-caliber frontends. Production-grade backends. AI/RAG pipelines. Zero slop.
 </samp>
 
 <br/><br/>
 
-<kbd>&nbsp; PLANNING &nbsp;</kbd>&nbsp;&nbsp;▸&nbsp;&nbsp;<kbd>&nbsp; BUILD &nbsp;</kbd>&nbsp;&nbsp;▸&nbsp;&nbsp;<kbd>&nbsp; AUDIT &nbsp;</kbd>&nbsp;&nbsp;▸&nbsp;&nbsp;<kbd>&nbsp; SHIP &nbsp;</kbd>
+<kbd>&nbsp; PLANNING &nbsp;</kbd>&nbsp;&nbsp;&#9654;&nbsp;&nbsp;<kbd>&nbsp; BUILD &nbsp;</kbd>&nbsp;&nbsp;&#9654;&nbsp;&nbsp;<kbd>&nbsp; AUDIT &nbsp;</kbd>&nbsp;&nbsp;&#9654;&nbsp;&nbsp;<kbd>&nbsp; SHIP &nbsp;</kbd>
 
 <br/><br/>
 
-<a href="#-quickstart">Quickstart</a>&nbsp;&nbsp;•&nbsp;&nbsp;<a href="#-how-it-works">How It Works</a>&nbsp;&nbsp;•&nbsp;&nbsp;<a href="#-agent-roster">Agents</a>&nbsp;&nbsp;•&nbsp;&nbsp;<a href="#-skill-library">Skills</a>&nbsp;&nbsp;•&nbsp;&nbsp;<a href="#-blueprints">Blueprints</a>&nbsp;&nbsp;•&nbsp;&nbsp;<a href="#-prompt-guide">Prompts</a>&nbsp;&nbsp;•&nbsp;&nbsp;<a href="#-cost-control">Cost Control</a>
+<a href="#quickstart">Quickstart</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#how-it-works">How It Works</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#agent-roster">Agents</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#skill-library">Skills</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#blueprints">Blueprints</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#prompt-guide">Prompts</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#cost-control">Cost Control</a>
 
 </div>
 
 <br/>
 
-## ⚡ Quickstart
+## Quickstart
 
 ```bash
 # 1. Clone into your global agents directory
@@ -55,36 +61,36 @@ New-Item -ItemType Junction -Path ".agents" -Target "$HOME\.antigravity\.agents"
 
 <br/>
 
-## 🧠 How It Works
+## How It Works
 
 Every incoming request passes through the **Complexity Gate** before a single line of code is written:
 
 ```
-                    ╭─────────────────────────╮
-                    │    Incoming Request      │
-                    ╰────────────┬────────────╯
-                                 │
-                                 ▼
-                   ┌─────────────────────────┐
-                   │   COMPLEXITY GATE CHECK  │
-                   └────────────┬────────────┘
-                                │
-              ┌─────────────────┴──────────────────┐
-              │                                    │
-     ╭────────▼────────╮              ╭────────────▼────────────╮
-     │   ✅ FAST PATH   │              │   🔄 FULL WORKFLOW      │
-     │                  │              │                         │
-     │  Direct execute  │              │  PLAN → BUILD → AUDIT   │
-     │  Zero overhead   │              │  Lazy-load 2-3 skills   │
-     │  No agents       │              │  Agent-routed execution │
-     ╰──────────────────╯              ╰─────────────────────────╯
+                    +---------------------------+
+                    |    Incoming Request        |
+                    +-------------+-------------+
+                                  |
+                                  v
+                   +--------------+--------------+
+                   |    COMPLEXITY GATE CHECK     |
+                   +--------------+--------------+
+                                  |
+              +-------------------+-------------------+
+              |                                       |
+     +--------v--------+                 +------------v-----------+
+     |    FAST PATH     |                 |    FULL WORKFLOW       |
+     |                  |                 |                        |
+     |  Direct execute  |                 |  PLAN > BUILD > AUDIT  |
+     |  Zero overhead   |                 |  Lazy-load 2-3 skills  |
+     |  No agents       |                 |  Agent-routed          |
+     +---------+--------+                 +-----------+------------+
 ```
 
 <table>
 <tr>
 <td width="50%">
 
-### 🟢 Fast Path (DirectOps)
+### Fast Path (DirectOps)
 
 Tasks that are **small, local, and single-pass**:
 - Isolated bug fixes
@@ -92,12 +98,12 @@ Tasks that are **small, local, and single-pass**:
 - Simple terminal commands
 - Single-file edits under ~15 min
 
-**Result →** Zero skill loading, zero agent switching, zero overhead.
+**Result:** Zero skill loading, zero agent switching, zero overhead.
 
 </td>
 <td width="50%">
 
-### 🟣 Full Workflow
+### Full Workflow
 
 Tasks with **architectural impact**:
 - Data model / schema changes
@@ -105,7 +111,7 @@ Tasks with **architectural impact**:
 - Multi-file feature builds
 - Destructive or ambiguous operations
 
-**Result →** Phased execution with verification gates at every stage.
+**Result:** Phased execution with verification gates at every stage.
 
 </td>
 </tr>
@@ -119,7 +125,7 @@ Tasks with **architectural impact**:
 
 <br/>
 
-## 🤖 Agent Roster
+## Agent Roster
 
 Six specialized agents. One active at a time. Each brings a distinct engineering mindset.
 
@@ -131,7 +137,7 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 <br/><br/>
 <img src="https://img.shields.io/badge/-Architecture-6D28D9?style=flat-square" />
 <br/><br/>
-<sub>Specs · File layout<br/>Schema planning<br/>Tech decisions</sub>
+<sub>Specs / File layout<br/>Schema planning<br/>Tech decisions</sub>
 <br/><br/>
 </td>
 <td align="center" width="16.6%">
@@ -149,7 +155,7 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 <br/><br/>
 <img src="https://img.shields.io/badge/-UI%2FUX-EC4899?style=flat-square" />
 <br/><br/>
-<sub>Visual hierarchy<br/>Motion · WebGL<br/>Responsive layout</sub>
+<sub>Visual hierarchy<br/>Motion / WebGL<br/>Responsive layout</sub>
 <br/><br/>
 </td>
 <td align="center" width="16.6%">
@@ -158,7 +164,7 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 <br/><br/>
 <img src="https://img.shields.io/badge/-Services-10B981?style=flat-square" />
 <br/><br/>
-<sub>APIs · Auth<br/>Data pipelines<br/>Security gates</sub>
+<sub>APIs / Auth<br/>Data pipelines<br/>Security gates</sub>
 <br/><br/>
 </td>
 <td align="center" width="16.6%">
@@ -167,7 +173,7 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 <br/><br/>
 <img src="https://img.shields.io/badge/-AI%2FRAG-F59E0B?style=flat-square" />
 <br/><br/>
-<sub>Embeddings · RAG<br/>Prompt systems<br/>Vector search</sub>
+<sub>Embeddings / RAG<br/>Prompt systems<br/>Vector search</sub>
 <br/><br/>
 </td>
 <td align="center" width="16.6%">
@@ -190,12 +196,12 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 
 <br/>
 
-## 📦 Skill Library
+## Skill Library
 
-**40 production-grade skills**, lazy-loaded on demand. Budget: **0** for trivial tasks · **2** for simple · **3** max for complex.
+**40 production-grade skills**, lazy-loaded on demand. Budget: **0** for trivial tasks / **2** for simple / **3** max for complex.
 
 <details>
-<summary><b>🎨 Frontend & Motion</b> — 16 skills</summary>
+<summary><b>Frontend and Motion</b> -- 16 skills</summary>
 <br/>
 
 | Skill | Purpose |
@@ -220,7 +226,7 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 </details>
 
 <details>
-<summary><b>⚙️ Backend & Data</b> — 9 skills</summary>
+<summary><b>Backend and Data</b> -- 9 skills</summary>
 <br/>
 
 | Skill | Purpose |
@@ -238,7 +244,7 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 </details>
 
 <details>
-<summary><b>🧠 AI & Knowledge</b> — 4 skills</summary>
+<summary><b>AI and Knowledge</b> -- 4 skills</summary>
 <br/>
 
 | Skill | Purpose |
@@ -251,7 +257,7 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 </details>
 
 <details>
-<summary><b>🎬 Media & Export</b> — 9 skills</summary>
+<summary><b>Media and Export</b> -- 9 skills</summary>
 <br/>
 
 | Skill | Purpose |
@@ -264,7 +270,7 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 </details>
 
 <details>
-<summary><b>🛠️ System & Workflow</b> — 2 skills</summary>
+<summary><b>System and Workflow</b> -- 2 skills</summary>
 <br/>
 
 | Skill | Purpose |
@@ -282,7 +288,7 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 
 <br/>
 
-## 🗡️ Commands & Slash Bridge
+## Commands and Slash Bridge
 
 Type a slash command to trigger a structured execution workflow.
 
@@ -290,12 +296,12 @@ Type a slash command to trigger a structured execution workflow.
 
 | Command | Action | Phase |
 |:--------|:-------|:------|
-| `/build-feature` | New feature, endpoint, or page | `PLAN → BUILD → AUDIT → SHIP` |
-| `/fix-issue` | Bug diagnosis and fix | `DIAGNOSE → FIX → VERIFY` |
-| `/review-code` | Code quality audit | `SCAN → REPORT → RECOMMENDATIONS` |
-| `/refactor` | Clean up, simplify, restructure | `ANALYZE → REFACTOR → VERIFY` |
-| `/ship-ui` | Polish UI to production quality | `AUDIT → POLISH → SHIP` |
-| `/research` | Tech decision, library comparison | `GATHER → ANALYZE → RECOMMEND` |
+| `/build-feature` | New feature, endpoint, or page | `PLAN > BUILD > AUDIT > SHIP` |
+| `/fix-issue` | Bug diagnosis and fix | `DIAGNOSE > FIX > VERIFY` |
+| `/review-code` | Code quality audit | `SCAN > REPORT > RECOMMENDATIONS` |
+| `/refactor` | Clean up, simplify, restructure | `ANALYZE > REFACTOR > VERIFY` |
+| `/ship-ui` | Polish UI to production quality | `AUDIT > POLISH > SHIP` |
+| `/research` | Tech decision, library comparison | `GATHER > ANALYZE > RECOMMEND` |
 | `/caveman` | Activate terse output mode | Immediate |
 
 </div>
@@ -303,13 +309,13 @@ Type a slash command to trigger a structured execution workflow.
 ### Command Safety Tiers
 
 > [!NOTE]
-> **Tier 1 — Auto-Execute**: `git status`, `npm run test`, `npx tsc --noEmit`
+> **Tier 1 -- Auto-Execute**: `git status`, `npm run test`, `npx tsc --noEmit`
 >
-> **Tier 2 — Propose First**: `npm install`, `git commit`, `prisma migrate dev`
+> **Tier 2 -- Propose First**: `npm install`, `git commit`, `prisma migrate dev`
 >
-> **Tier 3 — Explicit Approval**: Production migrations, git history rewrites
+> **Tier 3 -- Explicit Approval**: Production migrations, git history rewrites
 >
-> **Tier 4 — Permanently Blocked**: `cat .env`, `rm -rf`, `git push --force` ⛔
+> **Tier 4 -- Permanently Blocked**: `cat .env`, `rm -rf`, `git push --force`
 
 <br/>
 
@@ -319,15 +325,15 @@ Type a slash command to trigger a structured execution workflow.
 
 <br/>
 
-## 🏗️ Blueprints
+## Blueprints
 
 Production-ready recipes for common build patterns. Each blueprint specifies the exact agent, skills, and rules.
 
 <details>
-<summary><b>Blueprint A — Awwwards-Caliber SaaS Marketing Site</b></summary>
+<summary><b>Blueprint A -- Awwwards-Caliber SaaS Marketing Site</b></summary>
 <br/>
 
-**Agent**: `@frontend` · **Skills**: `threejs-r3f-fundamentals`, `gsap-scroll-patterns`, `advanced-responsive-patterns` · **Rule**: `rules/frontend.md`
+**Agent**: `@frontend` / **Skills**: `threejs-r3f-fundamentals`, `gsap-scroll-patterns`, `advanced-responsive-patterns` / **Rule**: `rules/frontend.md`
 
 **Recipe:**
 1. Initialize dynamic template layout (`template.tsx` in Next.js) for page entrance transitions
@@ -346,15 +352,15 @@ Implement an Awwwards-style SaaS marketing hero:
 4. prefers-reduced-motion handled via gsap.matchMedia().
 ```
 
-**Anti-Patterns:** ❌ Mixing Framer Motion + GSAP · ❌ Animating `top`/`left`/`width` · ❌ Uncompressed 3D models >5MB
+**Anti-Patterns:** Mixing Framer Motion + GSAP / Animating `top`/`left`/`width` / Uncompressed 3D models >5MB
 
 </details>
 
 <details>
-<summary><b>Blueprint B — High-Density Analytics Dashboard</b></summary>
+<summary><b>Blueprint B -- High-Density Analytics Dashboard</b></summary>
 <br/>
 
-**Agent**: `@frontend` · **Skills**: `frontend-architecture-patterns`, `react-performance-optimizations`, `ui-design-expert` · **Rule**: `rules/frontend.md`
+**Agent**: `@frontend` / **Skills**: `frontend-architecture-patterns`, `react-performance-optimizations`, `ui-design-expert` / **Rule**: `rules/frontend.md`
 
 **Recipe:**
 1. Select tone pack from `ecc-aesthetic-tones` (Utilitarian Pastel or Monospace Brutalist)
@@ -362,15 +368,15 @@ Implement an Awwwards-style SaaS marketing hero:
 3. Virtualized rendering for lists exceeding 100 rows
 4. Typographic leading audit via `ecc-design-critique` to eliminate CLS
 
-**Anti-Patterns:** ❌ Nested scrollable grids · ❌ Hardcoded primary colors · ❌ Full table re-renders on scroll
+**Anti-Patterns:** Nested scrollable grids / Hardcoded primary colors / Full table re-renders on scroll
 
 </details>
 
 <details>
-<summary><b>Blueprint C — Production-Grade AI RAG Product</b></summary>
+<summary><b>Blueprint C -- Production-Grade AI RAG Product</b></summary>
 <br/>
 
-**Agent**: `@ai-engineer` · **Skills**: `ai-rag-architectures`, `graphify`, `modern-database-orchestration` · **Rule**: `rules/backend.md`
+**Agent**: `@ai-engineer` / **Skills**: `ai-rag-architectures`, `graphify`, `modern-database-orchestration` / **Rule**: `rules/backend.md`
 
 **Recipe:**
 1. Initialize vector DB with dynamic connection pools
@@ -378,15 +384,15 @@ Implement an Awwwards-style SaaS marketing hero:
 3. Build community clustering index for cross-file relationships
 4. Semantic search with strict token budgets
 
-**Anti-Patterns:** ❌ Unchunked documents in LLM context · ❌ Embeddings without query indices · ❌ Synchronous embedding in HTTP loops
+**Anti-Patterns:** Unchunked documents in LLM context / Embeddings without query indices / Synchronous embedding in HTTP loops
 
 </details>
 
 <details>
-<summary><b>Blueprint D — Bulletproof Database & API Backend</b></summary>
+<summary><b>Blueprint D -- Bulletproof Database and API Backend</b></summary>
 <br/>
 
-**Agent**: `@backend` · **Skills**: `api-design-principles`, `backend-dev-guidelines`, `modern-database-orchestration` · **Rule**: `rules/backend.md`
+**Agent**: `@backend` / **Skills**: `api-design-principles`, `backend-dev-guidelines`, `modern-database-orchestration` / **Rule**: `rules/backend.md`
 
 **Recipe:**
 1. Type-safe schemas with Prisma or Drizzle ORM
@@ -394,7 +400,7 @@ Implement an Awwwards-style SaaS marketing hero:
 3. Postgres partial indexes + RLS security gates on sensitive tables
 4. Standard REST envelope responses
 
-**Anti-Patterns:** ❌ Raw unparameterized SQL · ❌ Mixed DDL+DML migrations · ❌ Exposed internal keys in responses
+**Anti-Patterns:** Raw unparameterized SQL / Mixed DDL+DML migrations / Exposed internal keys in responses
 
 </details>
 
@@ -406,7 +412,7 @@ Implement an Awwwards-style SaaS marketing hero:
 
 <br/>
 
-## 💬 Prompt Guide
+## Prompt Guide
 
 The difference between mediocre output and production-grade output is prompt structure.
 
@@ -414,7 +420,7 @@ The difference between mediocre output and production-grade output is prompt str
 <tr>
 <td width="50%">
 
-### ❌ Bad Prompt
+### Bad Prompt
 
 ```
 Make me a cool landing page with
@@ -427,7 +433,7 @@ transitions in NextJS.
 </td>
 <td width="50%">
 
-### ✅ Good Prompt
+### Good Prompt
 
 ```
 @frontend Load skills
@@ -440,7 +446,7 @@ Build a Next.js App Router landing
 page with a scroll-pinned 3D hero:
 1. Dynamic import canvas, ssr: false
 2. 5 breakpoints, mobile-first grids
-3. Camera → ScrollTrigger + useGSAP
+3. Camera > ScrollTrigger + useGSAP
 4. prefers-reduced-motion fallback
 ```
 
@@ -461,41 +467,33 @@ page with a scroll-pinned 3D hero:
 
 <br/>
 
-## 💰 Cost Control
+## Cost Control
 
-Every LLM call costs tokens. Antigravity OS is designed to minimize waste without sacrificing depth.
+Every LLM call costs tokens. DAWG OS is designed to minimize waste without sacrificing depth.
 
 <table>
 <tr>
 <td align="center" width="25%">
 <br/>
-<h3>🟢</h3>
-<samp><b>DirectOps</b></samp>
-<br/><br/>
-<sub>Fast Path bypasses agent & skill loading<br/><b>Saves 10K+ tokens/turn</b></sub>
+<h3>DirectOps</h3>
+<sub>Fast Path bypasses agent and skill loading<br/><b>Saves 10K+ tokens/turn</b></sub>
 <br/><br/>
 </td>
 <td align="center" width="25%">
 <br/>
-<h3>📦</h3>
-<samp><b>Skill Budget</b></samp>
-<br/><br/>
-<sub>0 / 2 / 3 skill limits<br/><b>Prevents attention dilution</b></sub>
+<h3>Skill Budget</h3>
+<sub>0 / 2 / 3 skill limits per task<br/><b>Prevents attention dilution</b></sub>
 <br/><br/>
 </td>
 <td align="center" width="25%">
 <br/>
-<h3>🔄</h3>
-<samp><b>40% Rule</b></samp>
-<br/><br/>
+<h3>40% Rule</h3>
 <sub>Compact at 40% context usage<br/><b>Recovers 20-50K+ tokens</b></sub>
 <br/><br/>
 </td>
 <td align="center" width="25%">
 <br/>
-<h3>🦴</h3>
-<samp><b>Caveman Mode</b></samp>
-<br/><br/>
+<h3>Caveman Mode</h3>
 <sub>75% shorter output via <code>/caveman</code><br/><b>Highest $/msg savings</b></sub>
 <br/><br/>
 </td>
@@ -505,11 +503,11 @@ Every LLM call costs tokens. Antigravity OS is designed to minimize waste withou
 ### Context Hygiene Checklist
 
 ```
-✦ Record decisions → STATE.md
-✦ Check off milestones → task.md  
-✦ Start fresh session → wipe history
-✦ Preload only STATE.md + task.md → strategic continuity restored
-✦ Use line-bounded file views → never read whole modules
+Record decisions .............. STATE.md
+Check off milestones .......... task.md
+Start fresh session ........... wipe history
+Preload only STATE.md + task.md strategic continuity restored
+Use line-bounded file views ... never read whole modules
 ```
 
 > [!TIP]
@@ -525,27 +523,27 @@ Every LLM call costs tokens. Antigravity OS is designed to minimize waste withou
 
 <div align="center">
 
-## 📐 Architecture — The Full Map
+## Architecture -- The Full Map
 
 </div>
 
 ```mermaid
 graph TB
-    subgraph DAWG_OS["🐕 DAWG OS"]
+    subgraph DAWG_OS["DAWG OS"]
         direction TB
         
-        REQ(["📩 Incoming Request"]) --> GATE{"⚡ Complexity Gate"}
+        REQ(["Incoming Request"]) --> GATE{"Complexity Gate"}
         
-        GATE -->|"Trivial"| FAST["🟢 Fast Path<br/>DirectOps"]
-        GATE -->|"Non-trivial"| WORKFLOW["🟣 Full Workflow"]
+        GATE -->|"Trivial"| FAST["Fast Path -- DirectOps"]
+        GATE -->|"Non-trivial"| WORKFLOW["Full Workflow"]
         
-        WORKFLOW --> PLAN["📋 PLANNING"]
-        PLAN --> BUILD["🔨 BUILD"]
-        BUILD --> AUDIT["🔍 AUDIT"]
-        AUDIT --> SHIP["🚀 SHIP"]
+        WORKFLOW --> PLAN["PLANNING"]
+        PLAN --> BUILD["BUILD"]
+        BUILD --> AUDIT["AUDIT"]
+        AUDIT --> SHIP["SHIP"]
     end
 
-    subgraph AGENTS["🤖 Agent Roster"]
+    subgraph AGENTS["Agent Roster"]
         direction LR
         AG1["@planner"]
         AG2["@debugger"]
@@ -555,7 +553,7 @@ graph TB
         AG6["@reviewer"]
     end
 
-    subgraph COMMANDS["🗡️ Slash Commands"]
+    subgraph COMMANDS["Slash Commands"]
         direction LR
         C1["/build-feature"]
         C2["/fix-issue"]
@@ -566,16 +564,16 @@ graph TB
         C7["/caveman"]
     end
 
-    subgraph SKILLS["📦 Skill Library — 40 Active"]
+    subgraph SKILLS["Skill Library -- 40 Active"]
         direction TB
-        SK1["🎨 Frontend & Motion<br/>16 skills"]
-        SK2["⚙️ Backend & Data<br/>9 skills"]
-        SK3["🧠 AI & Knowledge<br/>4 skills"]
-        SK4["🎬 Media & Export<br/>9 skills"]
-        SK5["🛠️ System<br/>2 skills"]
+        SK1["Frontend and Motion -- 16 skills"]
+        SK2["Backend and Data -- 9 skills"]
+        SK3["AI and Knowledge -- 4 skills"]
+        SK4["Media and Export -- 9 skills"]
+        SK5["System -- 2 skills"]
     end
 
-    subgraph RULES["📏 Rule Engine"]
+    subgraph RULES["Rule Engine"]
         direction LR
         R1["frontend.md"]
         R2["backend.md"]
@@ -584,7 +582,7 @@ graph TB
         R5["done-criteria.md"]
     end
 
-    subgraph STATE["💾 Persistence"]
+    subgraph STATE["Persistence"]
         direction LR
         S1["STATE.md"]
         S2["task.md"]
@@ -616,34 +614,34 @@ graph TB
 ```
 
 <details>
-<summary><b>📂 Directory Structure</b></summary>
+<summary><b>Directory Structure</b></summary>
 <br/>
 
 ```
 .agents/
-├── AGENTS.md                    # System authority (source of truth)
-├── README.md                    # This file
-├── settings.json                # Permission flags & behavior config
-├── STATE.md                     # Long-term architectural state
-├── task.md                      # Active session operations
-│
-├── agents/                      # 6 specialized agent definitions
-│   ├── planner.md    ├── debugger.md     ├── frontend.md
-│   ├── backend.md    ├── ai-engineer.md  └── reviewer.md
-│
-├── commands/                    # Slash command workflows
-│   ├── build-feature.md   ├── fix-issue.md    ├── review-code.md
-│   ├── refactor.md        ├── ship-ui.md      └── research.md
-│
-├── rules/                       # Engineering constraints (VERIFY phase)
-│   ├── frontend.md   ├── backend.md   ├── api.md
-│   ├── database.md   ├── project-structure.md  └── done-criteria.md
-│
-├── skills/                      # 40 lazy-loaded skill modules
-│   └── <skill-name>/SKILL.md
-│
-├── skill-system/                # Skill creation & maintenance
-└── hooks/                       # Pre-commit & lint-on-save scripts
++-- AGENTS.md                    # System authority (source of truth)
++-- README.md                    # This file
++-- settings.json                # Permission flags and behavior config
++-- STATE.md                     # Long-term architectural state
++-- task.md                      # Active session operations
+|
++-- agents/                      # 6 specialized agent definitions
+|   +-- planner.md    +-- debugger.md     +-- frontend.md
+|   +-- backend.md    +-- ai-engineer.md  +-- reviewer.md
+|
++-- commands/                    # Slash command workflows
+|   +-- build-feature.md   +-- fix-issue.md    +-- review-code.md
+|   +-- refactor.md        +-- ship-ui.md      +-- research.md
+|
++-- rules/                       # Engineering constraints (VERIFY phase)
+|   +-- frontend.md   +-- backend.md   +-- api.md
+|   +-- database.md   +-- project-structure.md  +-- done-criteria.md
+|
++-- skills/                      # 40 lazy-loaded skill modules
+|   +-- <skill-name>/SKILL.md
+|
++-- skill-system/                # Skill creation and maintenance
++-- hooks/                       # Pre-commit and lint-on-save scripts
 ```
 
 </details>
@@ -658,7 +656,7 @@ graph TB
 
 <div align="center">
 
-<samp><b>For engineers. For dawgs. 🐕</b></samp>
+<samp><b>For engineers. For dawgs.</b></samp>
 
 <br/><br/>
 
