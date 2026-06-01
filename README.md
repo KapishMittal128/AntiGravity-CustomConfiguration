@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:6D28D9,100:EC4899&height=220&section=header&text=ANTIGRAVITY%20OS&fontSize=60&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=The%20AI%20Execution%20Kernel&descSize=18&descAlignY=55&descAlign=50" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:6D28D9,100:EC4899&height=220&section=header&text=DAWG%20OS&fontSize=70&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=The%20AI%20Execution%20Kernel&descSize=18&descAlignY=55&descAlign=50" width="100%" />
 
 <br/>
 
@@ -525,9 +525,99 @@ Every LLM call costs tokens. Antigravity OS is designed to minimize waste withou
 
 <div align="center">
 
-## 📐 Architecture
+## 📐 Architecture — The Full Map
 
 </div>
+
+```mermaid
+graph TB
+    subgraph DAWG_OS["🐕 DAWG OS"]
+        direction TB
+        
+        REQ(["📩 Incoming Request"]) --> GATE{"⚡ Complexity Gate"}
+        
+        GATE -->|"Trivial"| FAST["🟢 Fast Path<br/>DirectOps"]
+        GATE -->|"Non-trivial"| WORKFLOW["🟣 Full Workflow"]
+        
+        WORKFLOW --> PLAN["📋 PLANNING"]
+        PLAN --> BUILD["🔨 BUILD"]
+        BUILD --> AUDIT["🔍 AUDIT"]
+        AUDIT --> SHIP["🚀 SHIP"]
+    end
+
+    subgraph AGENTS["🤖 Agent Roster"]
+        direction LR
+        AG1["@planner"]
+        AG2["@debugger"]
+        AG3["@frontend"]
+        AG4["@backend"]
+        AG5["@ai-engineer"]
+        AG6["@reviewer"]
+    end
+
+    subgraph COMMANDS["🗡️ Slash Commands"]
+        direction LR
+        C1["/build-feature"]
+        C2["/fix-issue"]
+        C3["/review-code"]
+        C4["/refactor"]
+        C5["/ship-ui"]
+        C6["/research"]
+        C7["/caveman"]
+    end
+
+    subgraph SKILLS["📦 Skill Library — 40 Active"]
+        direction TB
+        SK1["🎨 Frontend & Motion<br/>16 skills"]
+        SK2["⚙️ Backend & Data<br/>9 skills"]
+        SK3["🧠 AI & Knowledge<br/>4 skills"]
+        SK4["🎬 Media & Export<br/>9 skills"]
+        SK5["🛠️ System<br/>2 skills"]
+    end
+
+    subgraph RULES["📏 Rule Engine"]
+        direction LR
+        R1["frontend.md"]
+        R2["backend.md"]
+        R3["api.md"]
+        R4["database.md"]
+        R5["done-criteria.md"]
+    end
+
+    subgraph STATE["💾 Persistence"]
+        direction LR
+        S1["STATE.md"]
+        S2["task.md"]
+        S3["settings.json"]
+    end
+
+    WORKFLOW --> AGENTS
+    AGENTS --> COMMANDS
+    COMMANDS --> SKILLS
+    SKILLS --> BUILD
+    RULES --> AUDIT
+    STATE --> PLAN
+    SHIP --> S1
+
+    style DAWG_OS fill:#1a1a2e,stroke:#6D28D9,stroke-width:2px,color:#fff
+    style AGENTS fill:#16213e,stroke:#EC4899,stroke-width:2px,color:#fff
+    style COMMANDS fill:#0f3460,stroke:#10B981,stroke-width:2px,color:#fff
+    style SKILLS fill:#1a1a2e,stroke:#F59E0B,stroke-width:2px,color:#fff
+    style RULES fill:#16213e,stroke:#3B82F6,stroke-width:2px,color:#fff
+    style STATE fill:#0f3460,stroke:#6D28D9,stroke-width:2px,color:#fff
+    style GATE fill:#6D28D9,stroke:#EC4899,stroke-width:2px,color:#fff
+    style FAST fill:#10B981,stroke:#059669,stroke-width:2px,color:#fff
+    style WORKFLOW fill:#6D28D9,stroke:#EC4899,stroke-width:2px,color:#fff
+    style PLAN fill:#3B82F6,stroke:#6D28D9,stroke-width:1px,color:#fff
+    style BUILD fill:#F59E0B,stroke:#6D28D9,stroke-width:1px,color:#fff
+    style AUDIT fill:#EC4899,stroke:#6D28D9,stroke-width:1px,color:#fff
+    style SHIP fill:#10B981,stroke:#6D28D9,stroke-width:1px,color:#fff
+    style REQ fill:#EC4899,stroke:#6D28D9,stroke-width:2px,color:#fff
+```
+
+<details>
+<summary><b>📂 Directory Structure</b></summary>
+<br/>
 
 ```
 .agents/
@@ -538,39 +628,25 @@ Every LLM call costs tokens. Antigravity OS is designed to minimize waste withou
 ├── task.md                      # Active session operations
 │
 ├── agents/                      # 6 specialized agent definitions
-│   ├── planner.md
-│   ├── debugger.md
-│   ├── frontend.md
-│   ├── backend.md
-│   ├── ai-engineer.md
-│   └── reviewer.md
+│   ├── planner.md    ├── debugger.md     ├── frontend.md
+│   ├── backend.md    ├── ai-engineer.md  └── reviewer.md
 │
 ├── commands/                    # Slash command workflows
-│   ├── build-feature.md
-│   ├── fix-issue.md
-│   ├── review-code.md
-│   ├── refactor.md
-│   ├── ship-ui.md
-│   └── research.md
+│   ├── build-feature.md   ├── fix-issue.md    ├── review-code.md
+│   ├── refactor.md        ├── ship-ui.md      └── research.md
 │
 ├── rules/                       # Engineering constraints (VERIFY phase)
-│   ├── frontend.md
-│   ├── backend.md
-│   ├── api.md
-│   ├── database.md
-│   ├── project-structure.md
-│   └── done-criteria.md
+│   ├── frontend.md   ├── backend.md   ├── api.md
+│   ├── database.md   ├── project-structure.md  └── done-criteria.md
 │
 ├── skills/                      # 40 lazy-loaded skill modules
 │   └── <skill-name>/SKILL.md
 │
 ├── skill-system/                # Skill creation & maintenance
-│   ├── skill-ingestion.md
-│   └── skill-template.md
-│
 └── hooks/                       # Pre-commit & lint-on-save scripts
-    └── *.ps1
 ```
+
+</details>
 
 <br/>
 
@@ -582,7 +658,7 @@ Every LLM call costs tokens. Antigravity OS is designed to minimize waste withou
 
 <div align="center">
 
-<samp>Built for engineers who ship. Not for engineers who chat.</samp>
+<samp><b>For engineers. For dawgs. 🐕</b></samp>
 
 <br/><br/>
 
