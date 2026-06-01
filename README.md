@@ -1,23 +1,17 @@
-<p align="center">
-  <img src="logo.svg" alt="Antigravity OS Logo" width="100%" />
+# ✦ ANTIGRAVITY OS ✦
+
+<p align="left">
+  <a href="https://github.com/KapishMittal128/AntiGravity-CustomConfiguration"><img src="https://img.shields.io/badge/OS_Kernel-v3.0.0-6D28D9?style=flat-square&logo=google" /></a>
+  <img src="https://img.shields.io/badge/Skills_Library-40_Canonical-10B981?style=flat-square&logo=codeforces" />
+  <img src="https://img.shields.io/badge/Build_Validator-0_Errors_/_0_Warnings-059669?style=flat-square&logo=github-actions" />
+  <img src="https://img.shields.io/badge/Performance-60FPS_Target-EC4899?style=flat-square&logo=googlechrome" />
+  <img src="https://img.shields.io/badge/Accessibility-WCAG_AA-3B82F6?style=flat-square" />
 </p>
 
-<p align="center">
-  <a href="https://github.com/KapishMittal128/AntiGravity-CustomConfiguration"><img src="https://img.shields.io/badge/Antigravity_OS-v3.0.0-blueviolet?style=for-the-badge&logo=google" /></a>
-  <img src="https://img.shields.io/badge/Skills_Library-40_Canonical-emerald?style=for-the-badge&logo=codeforces" />
-  <img src="https://img.shields.io/badge/Build_Validator-0_Errors_/_0_Warnings-success?style=for-the-badge&logo=github-actions" />
-  <img src="https://img.shields.io/badge/Performance-60FPS_Target-ff69b4?style=for-the-badge&logo=googlechrome" />
-  <img src="https://img.shields.io/badge/Accessibility-WCAG_AA-blue?style=for-the-badge" />
-</p>
+> **Global execution kernel for high-fidelity, production-grade software engineering.**  
+> Build Awwwards-caliber landing pages, high-density analytics dashboards, pgvector ingestion pipelines, and safety-audited service backends with zero slop.
 
----
-
-<p align="center">
-  <b>Global execution kernel for high-fidelity, production-grade software engineering.</b><br />
-  <sub>Build Awwwards-caliber landing pages, high-density analytics dashboards, pgvector ingestion pipelines, and safety-audited service backends with zero slop.</sub>
-</p>
-
-<p align="center">
+<p align="left">
   <kbd>PLANNING</kbd> ➔ <kbd>BUILD</kbd> ➔ <kbd>AUDIT</kbd> ➔ <kbd>SHIP</kbd>
 </p>
 
