@@ -1,29 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
   <defs>
-    <style>
-      @keyframes spin-map {
-        from { transform: translateX(0); }
-        to { transform: translateX(-600px); }
-      }
-      @keyframes orbit-cw {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-      @keyframes orbit-ccw {
-        from { transform: rotate(360deg); }
-        to { transform: rotate(0deg); }
-      }
-      @keyframes pulse-soft {
-        0%, 100% { opacity: 0.7; }
-        50% { opacity: 1; }
-      }
-      .map-strip { animation: spin-map 20s linear infinite; }
-      .orbit-ring-1 { transform-origin: 400px 250px; animation: orbit-cw 30s linear infinite; }
-      .orbit-ring-2 { transform-origin: 400px 250px; animation: orbit-ccw 24s linear infinite; }
-      .orbit-ring-3 { transform-origin: 400px 250px; animation: orbit-cw 36s linear infinite; }
-      .node-pulse { animation: pulse-soft 3s ease-in-out infinite; }
-      .label-text { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; fill: #e2e8f0; }
-    </style>
     <clipPath id="globe-clip">
       <circle cx="400" cy="250" r="120"/>
     </clipPath>
@@ -66,7 +42,7 @@
   <!-- Background -->
   <rect width="800" height="500" fill="#0a0a0f"/>
 
-  <!-- Subtle star field -->
+  <!-- Star field -->
   <circle cx="50" cy="60" r="0.8" fill="#e2e8f0" opacity="0.3"/>
   <circle cx="150" cy="30" r="0.6" fill="#e2e8f0" opacity="0.25"/>
   <circle cx="680" cy="45" r="0.7" fill="#e2e8f0" opacity="0.3"/>
@@ -77,43 +53,82 @@
   <circle cx="550" cy="470" r="0.7" fill="#e2e8f0" opacity="0.25"/>
   <circle cx="60" cy="250" r="0.6" fill="#e2e8f0" opacity="0.2"/>
   <circle cx="740" cy="250" r="0.8" fill="#e2e8f0" opacity="0.3"/>
+  <circle cx="200" cy="450" r="0.5" fill="#e2e8f0" opacity="0.15"/>
+  <circle cx="600" cy="30" r="0.6" fill="#e2e8f0" opacity="0.2"/>
+  <circle cx="420" cy="15" r="0.4" fill="#e2e8f0" opacity="0.25"/>
+  <circle cx="130" cy="150" r="0.7" fill="#e2e8f0" opacity="0.15"/>
+  <circle cx="670" cy="350" r="0.5" fill="#e2e8f0" opacity="0.2"/>
 
   <!-- Outer atmospheric glow -->
-  <circle cx="400" cy="250" r="145" fill="none" stroke="#3b82f6" stroke-width="0.5" opacity="0.15"/>
-  <circle cx="400" cy="250" r="155" fill="none" stroke="#6D28D9" stroke-width="0.3" opacity="0.1"/>
+  <circle cx="400" cy="250" r="145" fill="none" stroke="#3b82f6" stroke-width="0.5" opacity="0.15">
+    <animate attributeName="opacity" values="0.1;0.2;0.1" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="400" cy="250" r="155" fill="none" stroke="#6D28D9" stroke-width="0.3" opacity="0.1">
+    <animate attributeName="opacity" values="0.05;0.15;0.05" dur="5s" repeatCount="indefinite"/>
+  </circle>
 
   <!-- Globe ocean base -->
   <circle cx="400" cy="250" r="120" fill="url(#ocean)"/>
 
   <!-- Continent strip (scrolling to simulate rotation) -->
   <g clip-path="url(#globe-clip)">
-    <g class="map-strip">
-      <!-- North America (set 1) -->
-      <path d="M310,180 L325,170 L340,168 L355,175 L360,190 L365,210 L355,230 L340,240 L330,235 L320,225 L315,210 L305,200 Z" fill="#22c55e" opacity="0.7"/>
-      <!-- South America (set 1) -->
-      <path d="M345,260 L355,255 L365,265 L370,285 L365,310 L355,330 L340,335 L335,320 L338,300 L340,280 Z" fill="#22c55e" opacity="0.65"/>
-      <!-- Europe (set 1) -->
-      <path d="M420,175 L430,170 L445,172 L450,180 L445,190 L435,195 L425,192 L418,185 Z" fill="#22c55e" opacity="0.7"/>
-      <!-- Africa (set 1) -->
-      <path d="M425,210 L440,205 L455,215 L460,240 L455,270 L445,290 L430,295 L420,280 L418,255 L420,230 Z" fill="#22c55e" opacity="0.65"/>
-      <!-- Asia (set 1) -->
-      <path d="M455,165 L475,158 L500,160 L520,170 L525,185 L520,200 L505,210 L490,215 L475,210 L460,200 L455,185 Z" fill="#22c55e" opacity="0.7"/>
-      <!-- Australia (set 1) -->
-      <path d="M510,280 L530,275 L540,285 L535,300 L520,305 L510,295 Z" fill="#22c55e" opacity="0.6"/>
+    <g>
+      <animateTransform attributeName="transform" type="translate" from="0,0" to="-600,0" dur="25s" repeatCount="indefinite"/>
 
-      <!-- DUPLICATE SET (offset +600px for seamless loop) -->
-      <!-- North America (set 2) -->
-      <path d="M910,180 L925,170 L940,168 L955,175 L960,190 L965,210 L955,230 L940,240 L930,235 L920,225 L915,210 L905,200 Z" fill="#22c55e" opacity="0.7"/>
-      <!-- South America (set 2) -->
-      <path d="M945,260 L955,255 L965,265 L970,285 L965,310 L955,330 L940,335 L935,320 L938,300 L940,280 Z" fill="#22c55e" opacity="0.65"/>
-      <!-- Europe (set 2) -->
-      <path d="M1020,175 L1030,170 L1045,172 L1050,180 L1045,190 L1035,195 L1025,192 L1018,185 Z" fill="#22c55e" opacity="0.7"/>
-      <!-- Africa (set 2) -->
-      <path d="M1025,210 L1040,205 L1055,215 L1060,240 L1055,270 L1045,290 L1030,295 L1020,280 L1018,255 L1020,230 Z" fill="#22c55e" opacity="0.65"/>
-      <!-- Asia (set 2) -->
-      <path d="M1055,165 L1075,158 L1100,160 L1120,170 L1125,185 L1120,200 L1105,210 L1090,215 L1075,210 L1060,200 L1055,185 Z" fill="#22c55e" opacity="0.7"/>
-      <!-- Australia (set 2) -->
-      <path d="M1110,280 L1130,275 L1140,285 L1135,300 L1120,305 L1110,295 Z" fill="#22c55e" opacity="0.6"/>
+      <!-- North America -->
+      <path d="M305,185 Q310,170 330,165 Q350,163 358,172 L365,185 Q370,200 368,215 Q365,230 355,238 Q340,245 328,238 Q318,230 312,218 Q305,205 305,195 Z" fill="#16a34a" opacity="0.65"/>
+      <!-- Greenland -->
+      <path d="M340,155 Q348,148 358,150 Q365,155 362,162 Q355,165 345,163 Z" fill="#15803d" opacity="0.55"/>
+      <!-- Central America -->
+      <path d="M328,242 Q332,248 335,255 Q333,260 330,258 Q326,252 325,245 Z" fill="#16a34a" opacity="0.6"/>
+      <!-- South America -->
+      <path d="M340,262 Q350,256 360,262 Q368,278 370,298 Q368,318 360,332 Q348,342 338,338 Q332,328 330,312 Q332,290 335,275 Z" fill="#16a34a" opacity="0.6"/>
+
+      <!-- Europe -->
+      <path d="M418,172 Q425,166 435,168 Q445,170 450,178 Q448,188 440,192 Q432,195 424,190 Q418,184 418,178 Z" fill="#16a34a" opacity="0.65"/>
+      <!-- British Isles -->
+      <path d="M410,170 Q414,165 418,168 Q417,174 413,175 Z" fill="#15803d" opacity="0.5"/>
+      <!-- Scandinavia -->
+      <path d="M435,158 Q440,150 445,155 Q448,165 443,170 Q438,168 435,162 Z" fill="#15803d" opacity="0.5"/>
+
+      <!-- Africa -->
+      <path d="M425,200 Q435,195 448,198 Q458,208 462,228 Q465,252 462,275 Q455,295 445,305 Q432,310 422,300 Q415,282 414,260 Q416,235 420,215 Z" fill="#16a34a" opacity="0.6"/>
+      <!-- Madagascar -->
+      <path d="M465,285 Q468,280 470,288 Q468,298 465,295 Z" fill="#15803d" opacity="0.45"/>
+
+      <!-- Asia -->
+      <path d="M458,160 Q472,152 492,150 Q515,152 530,162 Q538,175 535,190 Q528,205 515,212 Q498,218 482,215 Q468,208 460,195 Q455,180 458,168 Z" fill="#16a34a" opacity="0.65"/>
+      <!-- India -->
+      <path d="M478,218 Q485,215 492,220 Q495,235 490,248 Q483,252 478,245 Q475,232 478,222 Z" fill="#16a34a" opacity="0.55"/>
+      <!-- Japan -->
+      <path d="M540,175 Q544,170 546,178 Q544,188 540,185 Z" fill="#15803d" opacity="0.5"/>
+      <!-- Southeast Asia -->
+      <path d="M510,220 Q518,218 522,225 Q520,235 514,238 Q508,232 510,224 Z" fill="#15803d" opacity="0.5"/>
+
+      <!-- Australia -->
+      <path d="M515,278 Q528,272 542,275 Q550,285 548,298 Q540,308 528,310 Q516,305 512,295 Q512,285 515,278 Z" fill="#16a34a" opacity="0.55"/>
+
+      <!-- DUPLICATE SET offset +600px for seamless loop -->
+      <!-- North America 2 -->
+      <path d="M905,185 Q910,170 930,165 Q950,163 958,172 L965,185 Q970,200 968,215 Q965,230 955,238 Q940,245 928,238 Q918,230 912,218 Q905,205 905,195 Z" fill="#16a34a" opacity="0.65"/>
+      <path d="M940,155 Q948,148 958,150 Q965,155 962,162 Q955,165 945,163 Z" fill="#15803d" opacity="0.55"/>
+      <path d="M928,242 Q932,248 935,255 Q933,260 930,258 Q926,252 925,245 Z" fill="#16a34a" opacity="0.6"/>
+      <!-- South America 2 -->
+      <path d="M940,262 Q950,256 960,262 Q968,278 970,298 Q968,318 960,332 Q948,342 938,338 Q932,328 930,312 Q932,290 935,275 Z" fill="#16a34a" opacity="0.6"/>
+      <!-- Europe 2 -->
+      <path d="M1018,172 Q1025,166 1035,168 Q1045,170 1050,178 Q1048,188 1040,192 Q1032,195 1024,190 Q1018,184 1018,178 Z" fill="#16a34a" opacity="0.65"/>
+      <path d="M1010,170 Q1014,165 1018,168 Q1017,174 1013,175 Z" fill="#15803d" opacity="0.5"/>
+      <path d="M1035,158 Q1040,150 1045,155 Q1048,165 1043,170 Q1038,168 1035,162 Z" fill="#15803d" opacity="0.5"/>
+      <!-- Africa 2 -->
+      <path d="M1025,200 Q1035,195 1048,198 Q1058,208 1062,228 Q1065,252 1062,275 Q1055,295 1045,305 Q1032,310 1022,300 Q1015,282 1014,260 Q1016,235 1020,215 Z" fill="#16a34a" opacity="0.6"/>
+      <path d="M1065,285 Q1068,280 1070,288 Q1068,298 1065,295 Z" fill="#15803d" opacity="0.45"/>
+      <!-- Asia 2 -->
+      <path d="M1058,160 Q1072,152 1092,150 Q1115,152 1130,162 Q1138,175 1135,190 Q1128,205 1115,212 Q1098,218 1082,215 Q1068,208 1060,195 Q1055,180 1058,168 Z" fill="#16a34a" opacity="0.65"/>
+      <path d="M1078,218 Q1085,215 1092,220 Q1095,235 1090,248 Q1083,252 1078,245 Q1075,232 1078,222 Z" fill="#16a34a" opacity="0.55"/>
+      <path d="M1140,175 Q1144,170 1146,178 Q1144,188 1140,185 Z" fill="#15803d" opacity="0.5"/>
+      <path d="M1110,220 Q1118,218 1122,225 Q1120,235 1114,238 Q1108,232 1110,224 Z" fill="#15803d" opacity="0.5"/>
+      <!-- Australia 2 -->
+      <path d="M1115,278 Q1128,272 1142,275 Q1150,285 1148,298 Q1140,308 1128,310 Q1116,305 1112,295 Q1112,285 1115,278 Z" fill="#16a34a" opacity="0.55"/>
     </g>
   </g>
 
@@ -122,57 +137,67 @@
   <!-- Globe specular highlight -->
   <circle cx="400" cy="250" r="120" fill="url(#shine)"/>
   <!-- Globe edge ring -->
-  <circle cx="400" cy="250" r="120" fill="none" stroke="#60a5fa" stroke-width="1.2" opacity="0.35"/>
+  <circle cx="400" cy="250" r="120" fill="none" stroke="#60a5fa" stroke-width="1.2" opacity="0.3"/>
 
-  <!-- ORBITAL RING 1: Agents -->
-  <g class="orbit-ring-1">
-    <ellipse cx="400" cy="250" rx="195" ry="70" fill="none" stroke="#6D28D9" stroke-width="0.8" opacity="0.3" transform="rotate(-20, 400, 250)"/>
+  <!-- ORBITAL RING 1: Agents (tilted ellipse, clockwise) -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate" from="0 400 250" to="360 400 250" dur="30s" repeatCount="indefinite"/>
+    <ellipse cx="400" cy="250" rx="195" ry="70" fill="none" stroke="#6D28D9" stroke-width="0.8" opacity="0.25" transform="rotate(-20, 400, 250)"/>
     <g transform="rotate(-20, 400, 250)">
-      <circle cx="595" cy="250" r="14" fill="url(#grad-purple)" stroke="#a78bfa" stroke-width="1" class="node-pulse"/>
-      <text x="595" y="254" text-anchor="middle" class="label-text" font-size="8" font-weight="600">AGENTS</text>
+      <circle cx="595" cy="250" r="16" fill="url(#grad-purple)" stroke="#a78bfa" stroke-width="1">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <text x="595" y="254" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">AGENTS</text>
     </g>
   </g>
 
-  <!-- ORBITAL RING 2: Skills -->
-  <g class="orbit-ring-2">
-    <ellipse cx="400" cy="250" rx="210" ry="85" fill="none" stroke="#EC4899" stroke-width="0.8" opacity="0.25" transform="rotate(15, 400, 250)"/>
+  <!-- ORBITAL RING 2: Skills (tilted ellipse, counter-clockwise) -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate" from="360 400 250" to="0 400 250" dur="24s" repeatCount="indefinite"/>
+    <ellipse cx="400" cy="250" rx="210" ry="85" fill="none" stroke="#EC4899" stroke-width="0.8" opacity="0.2" transform="rotate(15, 400, 250)"/>
     <g transform="rotate(15, 400, 250)">
-      <circle cx="190" cy="250" r="14" fill="url(#grad-pink)" stroke="#f472b6" stroke-width="1" class="node-pulse"/>
-      <text x="190" y="254" text-anchor="middle" class="label-text" font-size="8" font-weight="600">SKILLS</text>
+      <circle cx="190" cy="250" r="16" fill="url(#grad-pink)" stroke="#f472b6" stroke-width="1">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="3.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="190" y="254" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">SKILLS</text>
     </g>
   </g>
 
-  <!-- ORBITAL RING 3: Rules -->
-  <g class="orbit-ring-3">
-    <ellipse cx="400" cy="250" rx="220" ry="55" fill="none" stroke="#10B981" stroke-width="0.8" opacity="0.25" transform="rotate(35, 400, 250)"/>
+  <!-- ORBITAL RING 3: Rules (tilted ellipse, clockwise, slower) -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate" from="0 400 250" to="360 400 250" dur="36s" repeatCount="indefinite"/>
+    <ellipse cx="400" cy="250" rx="220" ry="55" fill="none" stroke="#10B981" stroke-width="0.8" opacity="0.2" transform="rotate(35, 400, 250)"/>
     <g transform="rotate(35, 400, 250)">
-      <circle cx="620" cy="250" r="14" fill="url(#grad-green)" stroke="#34d399" stroke-width="1" class="node-pulse"/>
-      <text x="620" y="254" text-anchor="middle" class="label-text" font-size="8" font-weight="600">RULES</text>
+      <circle cx="620" cy="250" r="16" fill="url(#grad-green)" stroke="#34d399" stroke-width="1">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
+      </circle>
+      <text x="620" y="254" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">RULES</text>
     </g>
   </g>
 
-  <!-- Static corner labels -->
+  <!-- Corner labels with dashed connector lines -->
+
   <!-- Top-left: Commands -->
-  <rect x="30" y="30" width="110" height="28" rx="6" fill="#1e1b4b" stroke="#6D28D9" stroke-width="0.8" opacity="0.8"/>
-  <text x="85" y="48" text-anchor="middle" class="label-text" font-size="10" font-weight="600">/commands</text>
-  <line x1="140" y1="44" x2="290" y2="175" stroke="#6D28D9" stroke-width="0.4" opacity="0.25" stroke-dasharray="4,4"/>
+  <rect x="30" y="30" width="110" height="28" rx="6" fill="#1e1b4b" stroke="#6D28D9" stroke-width="0.8" opacity="0.85"/>
+  <text x="85" y="48" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="600" fill="#e2e8f0">/commands</text>
+  <line x1="140" y1="44" x2="295" y2="178" stroke="#6D28D9" stroke-width="0.4" opacity="0.2" stroke-dasharray="4,4"/>
 
   <!-- Top-right: State -->
-  <rect x="660" y="30" width="110" height="28" rx="6" fill="#1e1b4b" stroke="#3B82F6" stroke-width="0.8" opacity="0.8"/>
-  <text x="715" y="48" text-anchor="middle" class="label-text" font-size="10" font-weight="600">STATE.md</text>
-  <line x1="660" y1="44" x2="510" y2="175" stroke="#3B82F6" stroke-width="0.4" opacity="0.25" stroke-dasharray="4,4"/>
+  <rect x="660" y="30" width="110" height="28" rx="6" fill="#1e1b4b" stroke="#3B82F6" stroke-width="0.8" opacity="0.85"/>
+  <text x="715" y="48" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="600" fill="#e2e8f0">STATE.md</text>
+  <line x1="660" y1="44" x2="505" y2="178" stroke="#3B82F6" stroke-width="0.4" opacity="0.2" stroke-dasharray="4,4"/>
 
   <!-- Bottom-left: Hooks -->
-  <rect x="30" y="442" width="110" height="28" rx="6" fill="#1e1b4b" stroke="#10B981" stroke-width="0.8" opacity="0.8"/>
-  <text x="85" y="460" text-anchor="middle" class="label-text" font-size="10" font-weight="600">hooks/</text>
-  <line x1="140" y1="456" x2="300" y2="330" stroke="#10B981" stroke-width="0.4" opacity="0.25" stroke-dasharray="4,4"/>
+  <rect x="30" y="442" width="110" height="28" rx="6" fill="#1e1b4b" stroke="#10B981" stroke-width="0.8" opacity="0.85"/>
+  <text x="85" y="460" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="600" fill="#e2e8f0">hooks/</text>
+  <line x1="140" y1="456" x2="305" y2="325" stroke="#10B981" stroke-width="0.4" opacity="0.2" stroke-dasharray="4,4"/>
 
   <!-- Bottom-right: Skill System -->
-  <rect x="650" y="442" width="120" height="28" rx="6" fill="#1e1b4b" stroke="#F59E0B" stroke-width="0.8" opacity="0.8"/>
-  <text x="710" y="460" text-anchor="middle" class="label-text" font-size="10" font-weight="600">skill-system/</text>
-  <line x1="650" y1="456" x2="500" y2="330" stroke="#F59E0B" stroke-width="0.4" opacity="0.25" stroke-dasharray="4,4"/>
+  <rect x="650" y="442" width="120" height="28" rx="6" fill="#1e1b4b" stroke="#F59E0B" stroke-width="0.8" opacity="0.85"/>
+  <text x="710" y="460" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="600" fill="#e2e8f0">skill-system/</text>
+  <line x1="650" y1="456" x2="495" y2="325" stroke="#F59E0B" stroke-width="0.4" opacity="0.2" stroke-dasharray="4,4"/>
 
-  <!-- Center label on globe -->
-  <text x="400" y="245" text-anchor="middle" class="label-text" font-size="14" font-weight="700" opacity="0.9">DAWG OS</text>
-  <text x="400" y="263" text-anchor="middle" class="label-text" font-size="9" opacity="0.6">Execution Kernel</text>
+  <!-- Center label -->
+  <text x="400" y="245" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="700" fill="#e2e8f0" opacity="0.9">DAWG OS</text>
+  <text x="400" y="263" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="9" fill="#e2e8f0" opacity="0.6">Execution Kernel</text>
 </svg>
