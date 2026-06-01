@@ -4,10 +4,6 @@
 
 <br/>
 
-<img src="https://raw.githubusercontent.com/KapishMittal128/AntiGravity-CustomConfiguration/main/assets/globe.svg" width="200" height="200" />
-
-<br/><br/>
-
 <img src="https://img.shields.io/badge/Full--Stack_Architecture-Ship_Frontend_%26_Backend-6D28D9?style=for-the-badge&logo=vercel&logoColor=white" />
 <img src="https://img.shields.io/badge/AI%2FRAG_Pipelines-Vector_Search_%26_Embeddings-EC4899?style=for-the-badge&logo=openai&logoColor=white" />
 <img src="https://img.shields.io/badge/Production_Databases-Postgres_%7C_Prisma_%7C_Drizzle-10B981?style=for-the-badge&logo=postgresql&logoColor=white" />
@@ -30,11 +26,13 @@ Awwwards-caliber frontends. Production-grade backends. AI/RAG pipelines. Zero sl
 
 <br/><br/>
 
-<a href="#quickstart">Quickstart</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#how-it-works">How It Works</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#agent-roster">Agents</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#skill-library">Skills</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#blueprints">Blueprints</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#prompt-guide">Prompts</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#cost-control">Cost Control</a>
+<a href="#quickstart">Quickstart</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#how-it-works">How It Works</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#agent-roster">Agents</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#skill-library">Skills</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#three-prompts-to-master-everything">Prompts</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#architecture">Architecture</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#cost-control">Cost Control</a>
 
 </div>
 
 <br/>
+
+---
 
 ## Quickstart
 
@@ -53,17 +51,11 @@ New-Item -ItemType Junction -Path ".agents" -Target "$HOME\.antigravity\.agents"
 > [!TIP]
 > The OS activates automatically when your IDE's AI assistant detects the `.agents/` directory junction in your project root. No config files, no env vars, no setup commands.
 
-<br/>
-
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=27&height=2" width="100%" />
-</div>
-
-<br/>
+---
 
 ## How It Works
 
-Every incoming request passes through the **Complexity Gate** before a single line of code is written:
+DAWG OS intercepts every request and routes it through a **Complexity Gate** before executing anything. This is the core decision engine.
 
 ```
                     +---------------------------+
@@ -86,48 +78,17 @@ Every incoming request passes through the **Complexity Gate** before a single li
      +---------+--------+                 +-----------+------------+
 ```
 
-<table>
-<tr>
-<td width="50%">
+**Fast Path (DirectOps)** -- For small, local, single-pass tasks under ~15 minutes with zero architectural impact. No agent switching, no skill loading. Execute directly.
 
-### Fast Path (DirectOps)
+**Full Workflow** -- For tasks that modify data models, schemas, shared interfaces, delete existing code, or carry architectural ambiguity. Follows strict phases: `PLANNING` then `BUILD` then `AUDIT` then `SHIP`. Skills are lazy-loaded on demand (max 2 for simple, 3 for complex). An agent is selected and activated for the task duration.
 
-Tasks that are **small, local, and single-pass**:
-- Isolated bug fixes
-- File reads & grep searches
-- Simple terminal commands
-- Single-file edits under ~15 min
+**Anti-Overkill Check** -- Before defaulting to Full Workflow, the system verifies that escalation is justified. If the task can realistically be done in one file, one pass, under 15 minutes, and has no risk conditions (no destructive changes, no shared interface modifications, no schema changes, no security implications), it stays on Fast Path. This prevents token waste on trivial work.
 
-**Result:** Zero skill loading, zero agent switching, zero overhead.
-
-</td>
-<td width="50%">
-
-### Full Workflow
-
-Tasks with **architectural impact**:
-- Data model / schema changes
-- Shared interface modifications
-- Multi-file feature builds
-- Destructive or ambiguous operations
-
-**Result:** Phased execution with verification gates at every stage.
-
-</td>
-</tr>
-</table>
-
-<br/>
-
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=27&height=2" width="100%" />
-</div>
-
-<br/>
+---
 
 ## Agent Roster
 
-Six specialized agents. One active at a time. Each brings a distinct engineering mindset.
+Six specialized agents. One active at a time. Each brings a distinct engineering mindset. Mention `@agent-name` to activate.
 
 <table>
 <tr>
@@ -188,17 +149,13 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 </tr>
 </table>
 
-<br/>
+**Routing logic**: Bug or failure goes to `@debugger`. New feature goes to `@planner` then `@backend` or `@frontend`. UI polish goes to `@frontend`. AI/LLM work goes to `@ai-engineer`. Code review goes to `@reviewer`. Scope unclear goes to `@planner` first. Never activate two agents simultaneously for overlapping scope.
 
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=27&height=2" width="100%" />
-</div>
-
-<br/>
+---
 
 ## Skill Library
 
-**40 production-grade skills**, lazy-loaded on demand. Budget: **0** for trivial tasks / **2** for simple / **3** max for complex.
+**40 production-grade skills**, lazy-loaded on demand. Budget: **0** for trivial tasks / **2** for simple / **3** max for complex. Full routing index lives in `skills/CAPABILITIES.md`.
 
 <details>
 <summary><b>Frontend and Motion</b> -- 16 skills</summary>
@@ -280,19 +237,11 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 
 </details>
 
-<br/>
-
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=27&height=2" width="100%" />
-</div>
-
-<br/>
+---
 
 ## Commands and Slash Bridge
 
-Type a slash command to trigger a structured execution workflow.
-
-<div align="center">
+Type a slash command to trigger a structured execution workflow. Commands enforce phased execution -- you cannot skip from PLAN to SHIP.
 
 | Command | Action | Phase |
 |:--------|:-------|:------|
@@ -304,314 +253,99 @@ Type a slash command to trigger a structured execution workflow.
 | `/research` | Tech decision, library comparison | `GATHER > ANALYZE > RECOMMEND` |
 | `/caveman` | Activate terse output mode | Immediate |
 
-</div>
+**Safety tiers**: Tier 1 (auto-execute) covers safe reads like `git status`, `npm run test`. Tier 2 (propose first) covers environment changes like `npm install`, `git commit`. Tier 3 (explicit approval) covers production migrations and git history rewrites. Tier 4 (permanently blocked) covers `cat .env`, `rm -rf`, `git push --force` -- these never execute regardless of justification.
 
-### Command Safety Tiers
+---
 
-> [!NOTE]
-> **Tier 1 -- Auto-Execute**: `git status`, `npm run test`, `npx tsc --noEmit`
->
-> **Tier 2 -- Propose First**: `npm install`, `git commit`, `prisma migrate dev`
->
-> **Tier 3 -- Explicit Approval**: Production migrations, git history rewrites
->
-> **Tier 4 -- Permanently Blocked**: `cat .env`, `rm -rf`, `git push --force`
+## Three Prompts to Master Everything
 
-<br/>
+These three prompts demonstrate the full power of the OS. Each one activates the correct agent, loads the right skills, applies the matching rule file, and provides specific, numbered implementation steps. Copy and adapt them.
 
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=27&height=2" width="100%" />
-</div>
-
-<br/>
-
-## Blueprints
-
-Production-ready recipes for common build patterns. Each blueprint specifies the exact agent, skills, and rules.
-
-<details>
-<summary><b>Blueprint A -- Awwwards-Caliber SaaS Marketing Site</b></summary>
-<br/>
-
-**Agent**: `@frontend` / **Skills**: `threejs-r3f-fundamentals`, `gsap-scroll-patterns`, `advanced-responsive-patterns` / **Rule**: `rules/frontend.md`
-
-**Recipe:**
-1. Initialize dynamic template layout (`template.tsx` in Next.js) for page entrance transitions
-2. Load GSAP `ScrollTrigger` with `useGSAP` hook for safe mounting/cleanup
-3. Configure R3F canvas inside dynamic `ssr: false` component to split from initial bundle
-4. Cap DPR at `[1, 1.5]` and use `webgl-shader-basics` for 60fps frame budgets
-
-**Prompt Template:**
-```
-@frontend Load skills `threejs-r3f-fundamentals`, `gsap-scroll-patterns`, `advanced-responsive-patterns`.
-
-Implement an Awwwards-style SaaS marketing hero:
-1. Dynamic Canvas in template.tsx loading a Draco-compressed GLB model.
-2. Camera target animated along GSAP timeline synced to ScrollTrigger pinning.
-3. ScrollTrigger anticipatePin: 1, scrub capped at 0.8.
-4. prefers-reduced-motion handled via gsap.matchMedia().
-```
-
-**Anti-Patterns:** Mixing Framer Motion + GSAP / Animating `top`/`left`/`width` / Uncompressed 3D models >5MB
-
-</details>
-
-<details>
-<summary><b>Blueprint B -- High-Density Analytics Dashboard</b></summary>
-<br/>
-
-**Agent**: `@frontend` / **Skills**: `frontend-architecture-patterns`, `react-performance-optimizations`, `ui-design-expert` / **Rule**: `rules/frontend.md`
-
-**Recipe:**
-1. Select tone pack from `ecc-aesthetic-tones` (Utilitarian Pastel or Monospace Brutalist)
-2. Calibrate taste dials: low motion intensity, high visual density
-3. Virtualized rendering for lists exceeding 100 rows
-4. Typographic leading audit via `ecc-design-critique` to eliminate CLS
-
-**Anti-Patterns:** Nested scrollable grids / Hardcoded primary colors / Full table re-renders on scroll
-
-</details>
-
-<details>
-<summary><b>Blueprint C -- Production-Grade AI RAG Product</b></summary>
-<br/>
-
-**Agent**: `@ai-engineer` / **Skills**: `ai-rag-architectures`, `graphify`, `modern-database-orchestration` / **Rule**: `rules/backend.md`
-
-**Recipe:**
-1. Initialize vector DB with dynamic connection pools
-2. Parse unstructured files into normalized markdown nodes
-3. Build community clustering index for cross-file relationships
-4. Semantic search with strict token budgets
-
-**Anti-Patterns:** Unchunked documents in LLM context / Embeddings without query indices / Synchronous embedding in HTTP loops
-
-</details>
-
-<details>
-<summary><b>Blueprint D -- Bulletproof Database and API Backend</b></summary>
-<br/>
-
-**Agent**: `@backend` / **Skills**: `api-design-principles`, `backend-dev-guidelines`, `modern-database-orchestration` / **Rule**: `rules/backend.md`
-
-**Recipe:**
-1. Type-safe schemas with Prisma or Drizzle ORM
-2. Isolated DDL/DML migrations separating schema from data transforms
-3. Postgres partial indexes + RLS security gates on sensitive tables
-4. Standard REST envelope responses
-
-**Anti-Patterns:** Raw unparameterized SQL / Mixed DDL+DML migrations / Exposed internal keys in responses
-
-</details>
-
-<br/>
-
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=27&height=2" width="100%" />
-</div>
-
-<br/>
-
-## Prompt Guide
-
-The difference between mediocre output and production-grade output is prompt structure.
-
-<table>
-<tr>
-<td width="50%">
-
-### Bad Prompt
+### Prompt 1 -- Awwwards-Caliber Frontend
 
 ```
-Make me a cool landing page with
-cool 3D animations and page
-transitions in NextJS.
+@frontend Load skills `threejs-r3f-fundamentals`, `gsap-scroll-patterns`, and
+`advanced-responsive-patterns`. Apply rule `rules/frontend.md`.
+
+Build a Next.js App Router landing page with a scroll-pinned 3D hero section:
+1. Dynamic import the R3F Canvas component with ssr: false to split it from the
+   initial JS bundle entirely.
+2. Load a Draco-compressed GLB model (under 2MB) and set canvas DPR to [1, 1.5].
+3. Create a GSAP ScrollTrigger timeline using the useGSAP hook. Bind camera
+   rotation to scroll progress with anticipatePin: 1 and scrub: 0.8.
+4. Map all layout spacing to 5 breakpoints using mobile-first fluid clamp values.
+5. Handle prefers-reduced-motion using gsap.matchMedia() to disable all motion
+   while preserving the static layout.
 ```
 
-<sub><b>Why it fails:</b> Indefinite scope, no performance boundaries, forces the model to guess everything. You get jerky animations, slow canvas, and Framer/GSAP conflicts.</sub>
+**Why it works**: Named agent (`@frontend`). Three skills loaded (the maximum for complex work). Rule file specified. Five numbered steps with exact API calls, exact values, exact constraints. No ambiguity for the model to fill in.
 
-</td>
-<td width="50%">
+---
 
-### Good Prompt
+### Prompt 2 -- Bulletproof Backend API
 
 ```
-@frontend Load skills
-`threejs-r3f-fundamentals`,
-`gsap-scroll-patterns`,
-`advanced-responsive-patterns`.
-Apply rule `rules/frontend.md`.
+@backend Load skills `api-design-principles`, `ecc-database-migrations`, and
+`ecc-postgres-patterns`. Apply rule `rules/backend.md`.
 
-Build a Next.js App Router landing
-page with a scroll-pinned 3D hero:
-1. Dynamic import canvas, ssr: false
-2. 5 breakpoints, mobile-first grids
-3. Camera > ScrollTrigger + useGSAP
-4. prefers-reduced-motion fallback
+Implement a transaction ledger API for a multi-tenant SaaS application:
+1. Create a Prisma schema with User, Tenant, and Transaction models. Enforce
+   tenant isolation using a required tenantId foreign key on every table.
+2. Generate a DDL migration adding a partial index on active transactions
+   (WHERE status = 'active') to optimize dashboard queries.
+3. Write a separate DML migration that backfills existing rows in batches of
+   500 to prevent table locks during deployment.
+4. Implement Row Level Security policies blocking cross-tenant data access
+   at the database level, not the application level.
+5. Return all API responses in a standard { data, error, meta } JSON envelope.
+   Never expose internal database IDs or raw error stack traces.
 ```
 
-<sub><b>Why it works:</b> Named agent, explicit skills, specific constraints, measurable output criteria.</sub>
+**Why it works**: Named agent (`@backend`). Skills target the exact domain (API design + migrations + Postgres patterns). Rule file locks the quality standard. Steps separate DDL from DML (a critical production safety practice). Specifies the exact envelope format.
 
-</td>
-</tr>
-</table>
+---
+
+### Prompt 3 -- AI/RAG Ingestion Pipeline
+
+```
+@ai-engineer Load skills `ai-rag-architectures`, `graphify`, and
+`modern-database-orchestration`. Apply rule `rules/backend.md`.
+
+Build a document ingestion pipeline for semantic search over uploaded PDFs:
+1. Define a Postgres schema with pgvector extension. Create a documents table
+   storing raw text, a chunks table with vector(1536) embeddings, and a
+   communities table for graph cluster summaries.
+2. Write an ingestion transform that extracts text from uploaded PDFs, strips
+   formatting artifacts, and splits content at 500-token boundaries with
+   50-token overlap between adjacent chunks.
+3. Generate embeddings asynchronously using a background job queue, not inside
+   the HTTP request handler. Store each embedding with its source chunk ID
+   and document metadata.
+4. Build a BFS graph traversal routine using the graphify skill that maps
+   cross-document entity relationships into community summary nodes.
+5. Implement the search endpoint using cosine distance similarity. Return the
+   top 5 chunks ranked by relevance, with their source document metadata and
+   community context prepended to the LLM prompt template.
+```
+
+**Why it works**: Named agent (`@ai-engineer`). Skills cover the full stack (RAG architecture + knowledge graphs + database orchestration). Specifies exact vector dimensions, chunk sizes, overlap strategy, and async processing requirements. The model has no room to guess.
+
+---
 
 > [!IMPORTANT]
-> **The formula:** `@agent` + `skill names` + `rule file` + numbered, specific implementation steps = consistently excellent output.
+> **The formula**: `@agent` + `skill names` + `rule file` + numbered, specific implementation steps = consistently excellent output. Vague prompts produce vague code. Precise prompts produce production code.
 
-<br/>
+---
 
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=27&height=2" width="100%" />
-</div>
+## Architecture
 
-<br/>
-
-## Cost Control
-
-Every LLM call costs tokens. DAWG OS is designed to minimize waste without sacrificing depth.
-
-<table>
-<tr>
-<td align="center" width="25%">
-<br/>
-<h3>DirectOps</h3>
-<sub>Fast Path bypasses agent and skill loading<br/><b>Saves 10K+ tokens/turn</b></sub>
-<br/><br/>
-</td>
-<td align="center" width="25%">
-<br/>
-<h3>Skill Budget</h3>
-<sub>0 / 2 / 3 skill limits per task<br/><b>Prevents attention dilution</b></sub>
-<br/><br/>
-</td>
-<td align="center" width="25%">
-<br/>
-<h3>40% Rule</h3>
-<sub>Compact at 40% context usage<br/><b>Recovers 20-50K+ tokens</b></sub>
-<br/><br/>
-</td>
-<td align="center" width="25%">
-<br/>
-<h3>Caveman Mode</h3>
-<sub>75% shorter output via <code>/caveman</code><br/><b>Highest $/msg savings</b></sub>
-<br/><br/>
-</td>
-</tr>
-</table>
-
-### Context Hygiene Checklist
-
-```
-Record decisions .............. STATE.md
-Check off milestones .......... task.md
-Start fresh session ........... wipe history
-Preload only STATE.md + task.md strategic continuity restored
-Use line-bounded file views ... never read whole modules
-```
-
-> [!TIP]
-> **Prompt caching** (supported by Anthropic, Gemini, OpenAI) reduces the ~15-20K system prompt baseline cost by up to **90%**. The OS is designed to be cache-friendly.
-
-<br/>
-
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=27&height=2" width="100%" />
-</div>
-
-<br/>
+The globe below shows the full system topology. DAWG OS sits at the center. Agents, Skills, and Rules orbit as independent subsystems. Corner nodes represent supporting infrastructure -- commands, persistent state, hooks, and the skill authoring system.
 
 <div align="center">
 
-## Architecture -- The Full Map
+<img src="https://raw.githubusercontent.com/KapishMittal128/AntiGravity-CustomConfiguration/main/assets/globe.svg" width="700" />
 
 </div>
-
-```mermaid
-graph TB
-    subgraph DAWG_OS["DAWG OS"]
-        direction TB
-        
-        REQ(["Incoming Request"]) --> GATE{"Complexity Gate"}
-        
-        GATE -->|"Trivial"| FAST["Fast Path -- DirectOps"]
-        GATE -->|"Non-trivial"| WORKFLOW["Full Workflow"]
-        
-        WORKFLOW --> PLAN["PLANNING"]
-        PLAN --> BUILD["BUILD"]
-        BUILD --> AUDIT["AUDIT"]
-        AUDIT --> SHIP["SHIP"]
-    end
-
-    subgraph AGENTS["Agent Roster"]
-        direction LR
-        AG1["@planner"]
-        AG2["@debugger"]
-        AG3["@frontend"]
-        AG4["@backend"]
-        AG5["@ai-engineer"]
-        AG6["@reviewer"]
-    end
-
-    subgraph COMMANDS["Slash Commands"]
-        direction LR
-        C1["/build-feature"]
-        C2["/fix-issue"]
-        C3["/review-code"]
-        C4["/refactor"]
-        C5["/ship-ui"]
-        C6["/research"]
-        C7["/caveman"]
-    end
-
-    subgraph SKILLS["Skill Library -- 40 Active"]
-        direction TB
-        SK1["Frontend and Motion -- 16 skills"]
-        SK2["Backend and Data -- 9 skills"]
-        SK3["AI and Knowledge -- 4 skills"]
-        SK4["Media and Export -- 9 skills"]
-        SK5["System -- 2 skills"]
-    end
-
-    subgraph RULES["Rule Engine"]
-        direction LR
-        R1["frontend.md"]
-        R2["backend.md"]
-        R3["api.md"]
-        R4["database.md"]
-        R5["done-criteria.md"]
-    end
-
-    subgraph STATE["Persistence"]
-        direction LR
-        S1["STATE.md"]
-        S2["task.md"]
-        S3["settings.json"]
-    end
-
-    WORKFLOW --> AGENTS
-    AGENTS --> COMMANDS
-    COMMANDS --> SKILLS
-    SKILLS --> BUILD
-    RULES --> AUDIT
-    STATE --> PLAN
-    SHIP --> S1
-
-    style DAWG_OS fill:#1a1a2e,stroke:#6D28D9,stroke-width:2px,color:#fff
-    style AGENTS fill:#16213e,stroke:#EC4899,stroke-width:2px,color:#fff
-    style COMMANDS fill:#0f3460,stroke:#10B981,stroke-width:2px,color:#fff
-    style SKILLS fill:#1a1a2e,stroke:#F59E0B,stroke-width:2px,color:#fff
-    style RULES fill:#16213e,stroke:#3B82F6,stroke-width:2px,color:#fff
-    style STATE fill:#0f3460,stroke:#6D28D9,stroke-width:2px,color:#fff
-    style GATE fill:#6D28D9,stroke:#EC4899,stroke-width:2px,color:#fff
-    style FAST fill:#10B981,stroke:#059669,stroke-width:2px,color:#fff
-    style WORKFLOW fill:#6D28D9,stroke:#EC4899,stroke-width:2px,color:#fff
-    style PLAN fill:#3B82F6,stroke:#6D28D9,stroke-width:1px,color:#fff
-    style BUILD fill:#F59E0B,stroke:#6D28D9,stroke-width:1px,color:#fff
-    style AUDIT fill:#EC4899,stroke:#6D28D9,stroke-width:1px,color:#fff
-    style SHIP fill:#10B981,stroke:#6D28D9,stroke-width:1px,color:#fff
-    style REQ fill:#EC4899,stroke:#6D28D9,stroke-width:2px,color:#fff
-```
 
 <details>
 <summary><b>Directory Structure</b></summary>
@@ -626,16 +360,16 @@ graph TB
 +-- task.md                      # Active session operations
 |
 +-- agents/                      # 6 specialized agent definitions
-|   +-- planner.md    +-- debugger.md     +-- frontend.md
-|   +-- backend.md    +-- ai-engineer.md  +-- reviewer.md
+|   +-- planner.md      +-- debugger.md       +-- frontend.md
+|   +-- backend.md      +-- ai-engineer.md    +-- reviewer.md
 |
 +-- commands/                    # Slash command workflows
-|   +-- build-feature.md   +-- fix-issue.md    +-- review-code.md
-|   +-- refactor.md        +-- ship-ui.md      +-- research.md
+|   +-- build-feature.md    +-- fix-issue.md     +-- review-code.md
+|   +-- refactor.md         +-- ship-ui.md       +-- research.md
 |
 +-- rules/                       # Engineering constraints (VERIFY phase)
-|   +-- frontend.md   +-- backend.md   +-- api.md
-|   +-- database.md   +-- project-structure.md  +-- done-criteria.md
+|   +-- frontend.md    +-- backend.md    +-- api.md
+|   +-- database.md    +-- project-structure.md   +-- done-criteria.md
 |
 +-- skills/                      # 40 lazy-loaded skill modules
 |   +-- <skill-name>/SKILL.md
@@ -646,13 +380,24 @@ graph TB
 
 </details>
 
-<br/>
+---
 
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=27&height=2" width="100%" />
-</div>
+## Cost Control
 
-<br/>
+Every LLM call costs tokens. DAWG OS is designed to minimize waste without sacrificing reasoning depth.
+
+| Strategy | Mechanism | Savings |
+|:---------|:----------|:--------|
+| **DirectOps Bypass** | Fast Path skips agent activation and skill loading entirely | 10,000+ input tokens per turn |
+| **Skill Budget** | Strict 0/2/3 limits prevent attention dilution from excessive context | Preserves reasoning quality |
+| **40% Rule** | Compact context at 40% usage -- sync to STATE.md, start fresh session | Recovers 20-50K+ tokens |
+| **Caveman Mode** | `/caveman` drops output length by ~75% with zero information loss | Highest dollar/msg savings (output tokens cost 4-5x input) |
+| **Line-Bounded Views** | Always pass StartLine/EndLine when reading files | Prevents multi-thousand-line context bloat |
+| **Prompt Caching** | System prompt baseline (~15-20K tokens) cached by Anthropic/Gemini/OpenAI | Up to 90% reduction on cached input |
+
+**Context Hygiene Protocol**: When context exceeds 40%, record decisions in `STATE.md`, check off milestones in `task.md`, start a fresh chat session, and preload only `STATE.md` + `task.md` to restore strategic continuity. If an implementation path hits repeated regressions, abort and start clean instead of patching.
+
+---
 
 <div align="center">
 

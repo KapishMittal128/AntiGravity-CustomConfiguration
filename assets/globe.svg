@@ -1,79 +1,178 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="200" height="200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
   <defs>
     <style>
-      @keyframes rotate {
+      @keyframes spin-map {
+        from { transform: translateX(0); }
+        to { transform: translateX(-600px); }
+      }
+      @keyframes orbit-cw {
         from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
       }
-      @keyframes pulse {
-        0%, 100% { opacity: 0.6; }
+      @keyframes orbit-ccw {
+        from { transform: rotate(360deg); }
+        to { transform: rotate(0deg); }
+      }
+      @keyframes pulse-soft {
+        0%, 100% { opacity: 0.7; }
         50% { opacity: 1; }
       }
-      .ring { fill: none; stroke-width: 1.2; }
-      .meridian-group { transform-origin: 200px 200px; animation: rotate 12s linear infinite; }
-      .meridian-group-reverse { transform-origin: 200px 200px; animation: rotate 18s linear infinite reverse; }
-      .glow { animation: pulse 4s ease-in-out infinite; }
+      .map-strip { animation: spin-map 20s linear infinite; }
+      .orbit-ring-1 { transform-origin: 400px 250px; animation: orbit-cw 30s linear infinite; }
+      .orbit-ring-2 { transform-origin: 400px 250px; animation: orbit-ccw 24s linear infinite; }
+      .orbit-ring-3 { transform-origin: 400px 250px; animation: orbit-cw 36s linear infinite; }
+      .node-pulse { animation: pulse-soft 3s ease-in-out infinite; }
+      .label-text { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; fill: #e2e8f0; }
     </style>
-    <radialGradient id="globe-bg" cx="50%" cy="45%" r="50%">
-      <stop offset="0%" stop-color="#2d1b69" stop-opacity="0.8"/>
-      <stop offset="70%" stop-color="#1a1a2e" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#0D0D0D" stop-opacity="1"/>
+    <clipPath id="globe-clip">
+      <circle cx="400" cy="250" r="120"/>
+    </clipPath>
+    <radialGradient id="ocean" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="50%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#172554"/>
     </radialGradient>
-    <linearGradient id="ring-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6D28D9"/>
-      <stop offset="100%" stop-color="#EC4899"/>
-    </linearGradient>
-    <linearGradient id="ring-grad-2" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#3B82F6"/>
+    <radialGradient id="atmosphere" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.15"/>
+      <stop offset="70%" stop-color="#3b82f6" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shine" cx="30%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="grad-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/>
       <stop offset="100%" stop-color="#6D28D9"/>
     </linearGradient>
-    <linearGradient id="ring-grad-3" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#10B981"/>
+    <linearGradient id="grad-pink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#db2777"/>
+    </linearGradient>
+    <linearGradient id="grad-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="grad-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="grad-amber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
     </linearGradient>
   </defs>
 
   <!-- Background -->
-  <rect width="400" height="400" fill="#0D0D0D" rx="0"/>
+  <rect width="800" height="500" fill="#0a0a0f"/>
 
-  <!-- Outer glow -->
-  <circle cx="200" cy="200" r="130" fill="none" stroke="#6D28D9" stroke-width="0.5" opacity="0.3" class="glow"/>
-  <circle cx="200" cy="200" r="145" fill="none" stroke="#EC4899" stroke-width="0.3" opacity="0.2" class="glow"/>
+  <!-- Subtle star field -->
+  <circle cx="50" cy="60" r="0.8" fill="#e2e8f0" opacity="0.3"/>
+  <circle cx="150" cy="30" r="0.6" fill="#e2e8f0" opacity="0.25"/>
+  <circle cx="680" cy="45" r="0.7" fill="#e2e8f0" opacity="0.3"/>
+  <circle cx="750" cy="100" r="0.5" fill="#e2e8f0" opacity="0.2"/>
+  <circle cx="100" cy="420" r="0.8" fill="#e2e8f0" opacity="0.25"/>
+  <circle cx="720" cy="400" r="0.6" fill="#e2e8f0" opacity="0.3"/>
+  <circle cx="300" cy="20" r="0.5" fill="#e2e8f0" opacity="0.2"/>
+  <circle cx="550" cy="470" r="0.7" fill="#e2e8f0" opacity="0.25"/>
+  <circle cx="60" cy="250" r="0.6" fill="#e2e8f0" opacity="0.2"/>
+  <circle cx="740" cy="250" r="0.8" fill="#e2e8f0" opacity="0.3"/>
 
-  <!-- Globe body -->
-  <circle cx="200" cy="200" r="120" fill="url(#globe-bg)" stroke="url(#ring-grad-1)" stroke-width="1.5"/>
+  <!-- Outer atmospheric glow -->
+  <circle cx="400" cy="250" r="145" fill="none" stroke="#3b82f6" stroke-width="0.5" opacity="0.15"/>
+  <circle cx="400" cy="250" r="155" fill="none" stroke="#6D28D9" stroke-width="0.3" opacity="0.1"/>
 
-  <!-- Latitude lines (static) -->
-  <ellipse cx="200" cy="200" rx="120" ry="20" class="ring" stroke="#6D28D9" opacity="0.4"/>
-  <ellipse cx="200" cy="200" rx="120" ry="50" class="ring" stroke="#6D28D9" opacity="0.35"/>
-  <ellipse cx="200" cy="200" rx="120" ry="85" class="ring" stroke="#6D28D9" opacity="0.3"/>
-  <ellipse cx="200" cy="200" rx="120" ry="120" class="ring" stroke="#6D28D9" opacity="0.25"/>
+  <!-- Globe ocean base -->
+  <circle cx="400" cy="250" r="120" fill="url(#ocean)"/>
 
-  <!-- Rotating meridian set 1 -->
-  <g class="meridian-group">
-    <ellipse cx="200" cy="200" rx="30" ry="120" class="ring" stroke="url(#ring-grad-1)" opacity="0.6"/>
-    <ellipse cx="200" cy="200" rx="70" ry="120" class="ring" stroke="url(#ring-grad-2)" opacity="0.5"/>
-    <ellipse cx="200" cy="200" rx="105" ry="120" class="ring" stroke="url(#ring-grad-3)" opacity="0.4"/>
+  <!-- Continent strip (scrolling to simulate rotation) -->
+  <g clip-path="url(#globe-clip)">
+    <g class="map-strip">
+      <!-- North America (set 1) -->
+      <path d="M310,180 L325,170 L340,168 L355,175 L360,190 L365,210 L355,230 L340,240 L330,235 L320,225 L315,210 L305,200 Z" fill="#22c55e" opacity="0.7"/>
+      <!-- South America (set 1) -->
+      <path d="M345,260 L355,255 L365,265 L370,285 L365,310 L355,330 L340,335 L335,320 L338,300 L340,280 Z" fill="#22c55e" opacity="0.65"/>
+      <!-- Europe (set 1) -->
+      <path d="M420,175 L430,170 L445,172 L450,180 L445,190 L435,195 L425,192 L418,185 Z" fill="#22c55e" opacity="0.7"/>
+      <!-- Africa (set 1) -->
+      <path d="M425,210 L440,205 L455,215 L460,240 L455,270 L445,290 L430,295 L420,280 L418,255 L420,230 Z" fill="#22c55e" opacity="0.65"/>
+      <!-- Asia (set 1) -->
+      <path d="M455,165 L475,158 L500,160 L520,170 L525,185 L520,200 L505,210 L490,215 L475,210 L460,200 L455,185 Z" fill="#22c55e" opacity="0.7"/>
+      <!-- Australia (set 1) -->
+      <path d="M510,280 L530,275 L540,285 L535,300 L520,305 L510,295 Z" fill="#22c55e" opacity="0.6"/>
+
+      <!-- DUPLICATE SET (offset +600px for seamless loop) -->
+      <!-- North America (set 2) -->
+      <path d="M910,180 L925,170 L940,168 L955,175 L960,190 L965,210 L955,230 L940,240 L930,235 L920,225 L915,210 L905,200 Z" fill="#22c55e" opacity="0.7"/>
+      <!-- South America (set 2) -->
+      <path d="M945,260 L955,255 L965,265 L970,285 L965,310 L955,330 L940,335 L935,320 L938,300 L940,280 Z" fill="#22c55e" opacity="0.65"/>
+      <!-- Europe (set 2) -->
+      <path d="M1020,175 L1030,170 L1045,172 L1050,180 L1045,190 L1035,195 L1025,192 L1018,185 Z" fill="#22c55e" opacity="0.7"/>
+      <!-- Africa (set 2) -->
+      <path d="M1025,210 L1040,205 L1055,215 L1060,240 L1055,270 L1045,290 L1030,295 L1020,280 L1018,255 L1020,230 Z" fill="#22c55e" opacity="0.65"/>
+      <!-- Asia (set 2) -->
+      <path d="M1055,165 L1075,158 L1100,160 L1120,170 L1125,185 L1120,200 L1105,210 L1090,215 L1075,210 L1060,200 L1055,185 Z" fill="#22c55e" opacity="0.7"/>
+      <!-- Australia (set 2) -->
+      <path d="M1110,280 L1130,275 L1140,285 L1135,300 L1120,305 L1110,295 Z" fill="#22c55e" opacity="0.6"/>
+    </g>
   </g>
 
-  <!-- Rotating meridian set 2 (reverse, offset) -->
-  <g class="meridian-group-reverse">
-    <ellipse cx="200" cy="200" rx="50" ry="120" class="ring" stroke="url(#ring-grad-3)" opacity="0.35"/>
-    <ellipse cx="200" cy="200" rx="90" ry="120" class="ring" stroke="url(#ring-grad-1)" opacity="0.3"/>
+  <!-- Globe atmosphere overlay -->
+  <circle cx="400" cy="250" r="120" fill="url(#atmosphere)"/>
+  <!-- Globe specular highlight -->
+  <circle cx="400" cy="250" r="120" fill="url(#shine)"/>
+  <!-- Globe edge ring -->
+  <circle cx="400" cy="250" r="120" fill="none" stroke="#60a5fa" stroke-width="1.2" opacity="0.35"/>
+
+  <!-- ORBITAL RING 1: Agents -->
+  <g class="orbit-ring-1">
+    <ellipse cx="400" cy="250" rx="195" ry="70" fill="none" stroke="#6D28D9" stroke-width="0.8" opacity="0.3" transform="rotate(-20, 400, 250)"/>
+    <g transform="rotate(-20, 400, 250)">
+      <circle cx="595" cy="250" r="14" fill="url(#grad-purple)" stroke="#a78bfa" stroke-width="1" class="node-pulse"/>
+      <text x="595" y="254" text-anchor="middle" class="label-text" font-size="8" font-weight="600">AGENTS</text>
+    </g>
   </g>
 
-  <!-- Center dot cluster -->
-  <circle cx="200" cy="200" r="4" fill="#EC4899" opacity="0.9" class="glow"/>
-  <circle cx="200" cy="200" r="8" fill="none" stroke="#EC4899" stroke-width="0.8" opacity="0.5" class="glow"/>
-
-  <!-- Axis line -->
-  <line x1="200" y1="70" x2="200" y2="330" stroke="#6D28D9" stroke-width="0.6" opacity="0.3"/>
-
-  <!-- Orbital dots -->
-  <g class="meridian-group">
-    <circle cx="200" cy="80" r="3" fill="#10B981" opacity="0.8"/>
-    <circle cx="320" cy="200" r="2.5" fill="#3B82F6" opacity="0.7"/>
-    <circle cx="200" cy="320" r="3" fill="#EC4899" opacity="0.8"/>
-    <circle cx="80" cy="200" r="2.5" fill="#F59E0B" opacity="0.7"/>
+  <!-- ORBITAL RING 2: Skills -->
+  <g class="orbit-ring-2">
+    <ellipse cx="400" cy="250" rx="210" ry="85" fill="none" stroke="#EC4899" stroke-width="0.8" opacity="0.25" transform="rotate(15, 400, 250)"/>
+    <g transform="rotate(15, 400, 250)">
+      <circle cx="190" cy="250" r="14" fill="url(#grad-pink)" stroke="#f472b6" stroke-width="1" class="node-pulse"/>
+      <text x="190" y="254" text-anchor="middle" class="label-text" font-size="8" font-weight="600">SKILLS</text>
+    </g>
   </g>
+
+  <!-- ORBITAL RING 3: Rules -->
+  <g class="orbit-ring-3">
+    <ellipse cx="400" cy="250" rx="220" ry="55" fill="none" stroke="#10B981" stroke-width="0.8" opacity="0.25" transform="rotate(35, 400, 250)"/>
+    <g transform="rotate(35, 400, 250)">
+      <circle cx="620" cy="250" r="14" fill="url(#grad-green)" stroke="#34d399" stroke-width="1" class="node-pulse"/>
+      <text x="620" y="254" text-anchor="middle" class="label-text" font-size="8" font-weight="600">RULES</text>
+    </g>
+  </g>
+
+  <!-- Static corner labels -->
+  <!-- Top-left: Commands -->
+  <rect x="30" y="30" width="110" height="28" rx="6" fill="#1e1b4b" stroke="#6D28D9" stroke-width="0.8" opacity="0.8"/>
+  <text x="85" y="48" text-anchor="middle" class="label-text" font-size="10" font-weight="600">/commands</text>
+  <line x1="140" y1="44" x2="290" y2="175" stroke="#6D28D9" stroke-width="0.4" opacity="0.25" stroke-dasharray="4,4"/>
+
+  <!-- Top-right: State -->
+  <rect x="660" y="30" width="110" height="28" rx="6" fill="#1e1b4b" stroke="#3B82F6" stroke-width="0.8" opacity="0.8"/>
+  <text x="715" y="48" text-anchor="middle" class="label-text" font-size="10" font-weight="600">STATE.md</text>
+  <line x1="660" y1="44" x2="510" y2="175" stroke="#3B82F6" stroke-width="0.4" opacity="0.25" stroke-dasharray="4,4"/>
+
+  <!-- Bottom-left: Hooks -->
+  <rect x="30" y="442" width="110" height="28" rx="6" fill="#1e1b4b" stroke="#10B981" stroke-width="0.8" opacity="0.8"/>
+  <text x="85" y="460" text-anchor="middle" class="label-text" font-size="10" font-weight="600">hooks/</text>
+  <line x1="140" y1="456" x2="300" y2="330" stroke="#10B981" stroke-width="0.4" opacity="0.25" stroke-dasharray="4,4"/>
+
+  <!-- Bottom-right: Skill System -->
+  <rect x="650" y="442" width="120" height="28" rx="6" fill="#1e1b4b" stroke="#F59E0B" stroke-width="0.8" opacity="0.8"/>
+  <text x="710" y="460" text-anchor="middle" class="label-text" font-size="10" font-weight="600">skill-system/</text>
+  <line x1="650" y1="456" x2="500" y2="330" stroke="#F59E0B" stroke-width="0.4" opacity="0.25" stroke-dasharray="4,4"/>
+
+  <!-- Center label on globe -->
+  <text x="400" y="245" text-anchor="middle" class="label-text" font-size="14" font-weight="700" opacity="0.9">DAWG OS</text>
+  <text x="400" y="263" text-anchor="middle" class="label-text" font-size="9" opacity="0.6">Execution Kernel</text>
 </svg>
