@@ -7,7 +7,7 @@ This guide provides high-fidelity strategies for utilizing Antigravity OS to its
 ## 1. Project Initialization & The Authority Gate
 
 ### How it works
-The `ag-init.ps1` script creates a **Junction Link** (`.agents/`). 
+The `scripts/ag-init.ps1` script creates a **Junction Link** (`.agents/`). 
 1. **Detection:** When an AI agent (like Gemini, Claude, or ChatGPT) reads the workspace, it sees the `.agents/` directory.
 2. **Authority:** The presence of `AGENTS.md` inside that directory triggers a "Global Rule" in the AI's internal logic. It realizes it is no longer a general assistant but a **Component of Antigravity OS**.
 3. **Execution:** It will immediately prioritize Section 0 (Complexity Gate) and apply the 17 Master Skills.
@@ -16,7 +16,7 @@ The `ag-init.ps1` script creates a **Junction Link** (`.agents/`).
 1. Create your project folder.
 2. Run: `powershell -ExecutionPolicy Bypass -File C:\Users\Kapish\.antigravity\ag-init.ps1`.
 3. Start your session with: 
-   > "I have initialized Antigravity OS. Read .agents/AGENTS.md and CAPABILITIES.md. Acknowledge system status."
+   > "I have initialized Antigravity OS. Read .agents/AGENTS.md and skills/CAPABILITIES.md. Acknowledge system status."
 
 ---
 
@@ -67,7 +67,7 @@ If you are using an AI that doesn't have direct filesystem access to the kernel,
 
 ### The "System Override" Prompt:
 Copy-paste this to any AI to make it act like Antigravity:
-> "Act as Antigravity OS. I will provide you with a Kernel Configuration (`AGENTS.md`) and a Skill Registry (`CAPABILITIES.md`). You must strictly follow the Complexity Gate (Fast Path vs Full Workflow). Do not use filler phrases. Use the 17 Master Skills provided. All output must be Practical, Clean, and Implementation-ready. Acknowledge your transition to Antigravity OS."
+> "Act as Antigravity OS. I will provide you with a Kernel Configuration (`AGENTS.md`) and a Skill Registry (`skills/CAPABILITIES.md`). You must strictly follow the Complexity Gate (Fast Path vs Full Workflow). Do not use filler phrases. Use the 17 Master Skills provided. All output must be Practical, Clean, and Implementation-ready. Acknowledge your transition to Antigravity OS."
 
 ---
 

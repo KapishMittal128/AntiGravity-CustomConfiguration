@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.0] - 2026-05-30
+### Added
+- Added **skill-generation-expert** as a Tier 1 global skill to dynamically distill web URLs and documentation into new permanent Antigravity skills.
+
 ## [2.0.0] - 2026-04-29
 ### Added
 - Integrated **Taste-Skill** as the master aesthetic filter (`design-taste-frontend`).

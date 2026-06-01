@@ -66,7 +66,7 @@
   },
   "hooks": {
     "preCommit": ".agents/hooks/pre-commit.ps1",
-    "lintOnSave": ".agents/hooks/lint-on-save.ps1",
+    "lintOnSave": "",
     "validator": ".agents/validate_agents.py"
   },
   "behavior": {
@@ -95,7 +95,7 @@
   },
   "agents": {
     "directory": ".agents/agents",
-    "available": ["planner", "debugger", "frontend", "backend", "ai-engineer", "reviewer", "code-reviewer"],
+    "available": ["planner", "debugger", "frontend", "backend", "ai-engineer", "reviewer"],
     "loadingStrategy": "on-demand"
   },
   "commands": {
@@ -104,12 +104,12 @@
     "slashBridge": {
       "enabled": true,
       "description": "Slash-prefixed prompts (e.g. /build-feature) are automatically routed to .agents/commands/<name>.md via AGENTS.md Section 6A.",
-      "nativeWrappers": "global_workflows/"
+      "nativeWrappers": ""
     }
   },
   "rules": {
     "directory": ".agents/rules",
-    "enforced": ["frontend", "backend", "api", "database", "project-structure"],
+    "enforced": ["frontend", "backend", "api", "database", "project-structure", "graphify"],
     "enforcementPhase": "verify"
   },
   "projectState": {

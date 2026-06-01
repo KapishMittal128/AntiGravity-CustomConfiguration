@@ -79,3 +79,20 @@ Do NOT activate the Frontend agent for:
 - Does not configure CI/CD, deployment, or infrastructure
 - Does not choose backend libraries or service integrations
 - Does not override design direction without explicit instruction — implements, does not invent
+
+---
+
+## Integrated Design-Engineering Skills
+
+The Frontend agent draws directly from the specialized design engineering skills in `.agents/skills/`:
+- `ecc-taste-dials`: The Brief Inference protocol and dynamic variance dials.
+- `ecc-aesthetic-tones`: Exact styling specifications for minimalism, brutalism, glassmorphism, retro-synth, Art Deco, organic, and B2B SaaS styles.
+- `ecc-design-critique`: System-level visual audit procedures and layout pre-flight checks.
+- `ecc-hydration-performance`: Font fallback size overrides and RSC hydration guardrails.
+- `microinteractions`: Button morphing, success checkmark springs, milestone canvas confetti celebrations, and bespoke keyboard focus rings.
+
+The Frontend agent also loads from `.agents/skills/` for animation and accessibility:
+- `gsap-scroll-patterns`: ScrollTrigger, pinning, scrub, parallax, horizontal scroll, and timeline patterns.
+- `framer-motion-patterns`: Entrance/exit animations, stagger, scroll reveals, page transitions, layout animations, and gesture patterns.
+- `motion-accessibility`: Reduced-motion handling, ARIA, focus trapping, skip links, keyboard navigation. **Loaded automatically with any animation skill.**
+

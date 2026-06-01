@@ -26,7 +26,7 @@ SKILL_REQUIRED_HEADINGS = [
     "## Maintenance Notes",
 ]
 SKILL_PHASE_RE = re.compile(r"(?m)^## Phase \d+: .+")
-KABAB_TOKEN_RE = re.compile(r"`([a-z0-9]+(?:-[a-z0-9]+)+)`")
+KABAB_TOKEN_RE = re.compile(r"`([a-z0-9]+(?:-[a-z0-9]+)*)`")
 PATH_TOKEN_RE = re.compile(r"`((?:\.agents/)?[A-Za-z0-9_./-]+\.(?:md|json|sh|ps1|py))`")
 VERSION_RE = re.compile(r'^version:\s*"([^"]+)"\s*$', re.MULTILINE)
 DATE_RE = re.compile(r"^verified_date:\s*(\d{4}-\d{2}-\d{2})\s*$", re.MULTILINE)

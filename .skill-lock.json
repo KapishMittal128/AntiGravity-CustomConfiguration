@@ -1,0 +1,35 @@
+{
+    "version":  3,
+    "skills":  {
+                   "caveman":  {
+                                   "source":  "JuliusBrussee/caveman",
+                                   "sourceType":  "github",
+                                   "sourceUrl":  "https://github.com/JuliusBrussee/caveman.git",
+                                   "skillPath":  "caveman/SKILL.md",
+                                   "skillFolderHash":  "825e13085d1515fe67881b2123f3bf9b34c26154",
+                                   "installedAt":  "2026-04-29T07:16:26.893Z",
+                                   "updatedAt":  "2026-04-29T07:16:26.893Z"
+                               },
+                   "frontend-design":  {
+                                           "source":  "anthropics/claude-code",
+                                           "sourceType":  "github",
+                                           "sourceUrl":  "https://github.com/anthropics/claude-code.git",
+                                           "skillPath":  "plugins/frontend-design/skills/frontend-design/SKILL.md",
+                                           "skillFolderHash":  "3bd61bab4d6b858c5d3af8adf14b917ce853e4c5",
+                                           "installedAt":  "2026-04-29T07:25:21.309Z",
+                                           "updatedAt":  "2026-04-29T07:25:21.309Z"
+                                       },
+                   "graphify":  {
+                                    "source":  "safishamsi/graphify",
+                                    "sourceType":  "github",
+                                    "sourceUrl":  "https://github.com/safishamsi/graphify.git",
+                                    "skillPath":  "graphify/SKILL.md",
+                                    "skillFolderHash":  "D712183F01BD532492EF4273DD1718C9AB62B4236C6CA85FAD37500EF44E3FA5",
+                                    "installedAt":  "2026-05-04T15:16:22.922Z",
+                                    "updatedAt":  "2026-05-04T15:16:22.923Z"
+                                }
+               },
+    "dismissed":  {
+
+                  }
+}

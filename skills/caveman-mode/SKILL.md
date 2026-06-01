@@ -1,7 +1,6 @@
 ---
 name: caveman-mode
-description: >
-  Ultra-compressed communication mode. Cuts token usage ~75%. Use when user says "caveman mode", "talk like caveman", "use caveman", "less tokens", "be brief", or invokes /caveman.
+description: "Ultra-compressed communication mode. Cuts token usage ~75%. Use when user requests caveman mode, less tokens, brief talk, or invokes /caveman."
 version: "1.0.0"
 verified_date: 2026-04-29
 category: core

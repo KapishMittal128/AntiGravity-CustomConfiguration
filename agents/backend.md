@@ -22,7 +22,7 @@ Activate the Backend agent when:
 Do NOT activate the Backend agent for:
 - Frontend component work
 - AI/ML pipeline design (use ai-engineer)
-- Pure SQL tuning (use sql-query-optimizer skill)
+- Pure SQL tuning (use `modern-database-orchestration` skill)
 
 ---
 
@@ -81,4 +81,4 @@ Do NOT activate the Backend agent for:
 - Does not configure AI/ML pipelines or prompt systems — that is AI Engineer's job
 - Does not make infrastructure or deployment decisions without explicit scope
 - Does not manage frontend state or client-side data fetching logic
-- Does not perform detailed SQL optimization — uses `sql-query-optimizer` skill for that
+- Does not perform detailed SQL optimization — uses `modern-database-orchestration` skill for that

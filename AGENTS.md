@@ -126,7 +126,7 @@ This section governs what gets loaded into context. Every item loaded has a cost
 
 - Do NOT pre-read all agent files at session start
 - Do NOT pre-read all rule files at session start
-- Do NOT load all 21 skills for orientation
+- Do NOT load all 40 skills for orientation
 - Do NOT read AGENTS.md sections irrelevant to the current task
 
 ### Context Hygiene & Intelligence Guardrail (40% Rule)
@@ -169,7 +169,7 @@ Task: "Change the button color to blue"
 
 ### Agent Loading Protocol
 
-Read an agent file ONLY when you switch into its role. Do not load all 7 agents upfront.
+Read an agent file ONLY when you switch into its role. Do not load all 6 agents upfront.
 One agent file per task. Reading it once is sufficient — do not re-read it mid-task.
 
 ### Rules Loading Protocol
@@ -242,6 +242,9 @@ When a user prompt begins with a `/` followed by a known command name, treat it 
 | `/refactor` | `.agents/commands/refactor.md` |
 | `/ship-ui` | `.agents/commands/ship-ui.md` |
 | `/research` | `.agents/commands/research.md` |
+| `/brainstorm` | `.agents/commands/brainstorm.md` |
+| `/execute-plan` | `.agents/commands/execute-plan.md` |
+| `/write-plan` | `.agents/commands/write-plan.md` |
 | `/caveman` | `.agents/skills/caveman-mode/SKILL.md` |
 
 
@@ -269,6 +272,7 @@ Apply rules during the VERIFY phase — after implementation, before delivery.
 | API design | `rules/api.md` |
 | Database work | `rules/database.md` |
 | File/folder changes | `rules/project-structure.md` |
+| Performance & context hygiene | `rules/performance.md` (Standing rule checked continuously) |
 | Declaring any task done | `rules/done-criteria.md` |
 
 If generated output violates a rule: fix it before delivering. Not after. Never flag it as "tech debt to handle later" and ship it anyway.

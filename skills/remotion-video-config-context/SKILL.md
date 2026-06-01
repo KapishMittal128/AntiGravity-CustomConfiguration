@@ -1,33 +1,32 @@
 ---
 name: remotion-video-config-context
-source_repo: remotion-dev/remotion
-source_reference: packages/core/src/use-video-config.ts
+description: Extracts global composition properties to create relative, responsive animations. Use when calculating relative animation offsets, frame timelines, or dynamic aspect bounds.
+version: "1.0.0"
+verified_date: 2026-06-01
+category: core
 ---
 
-# remotion-video-config-context
+# Remotion Video Config Context
 
-## Description
-Extracts global composition properties to create relative, responsive animations that automatically scale with duration and resolution.
+## Purpose
+Extract and utilize global composition metrics (fps, durationInFrames, width, height) to build relative and responsive video elements.
 
-## Code Pattern
+## When to Use This Skill
+- Calculating relative entrance or exit anim keys (e.g. exit 1s before end).
+- Adjusting component scales based on resolution aspect bounds dynamically.
+
+## Output Format / Delivery
+Provide client video hook integrations extracting metadata properties safely.
+
+## Behavior Rules
+1. **Never use hard-coded absolute frame indices** for exit animations — always calculate them relative to the total duration.
+2. **Always leverage composition dimensions** to scale coordinate layouts.
+
+## Maintenance Notes
+This skill is locked for video contexts.
+
+---
+
+## Phase 1: Context Extraction Patterns
+
 `const { fps, durationInFrames, width, height } = useVideoConfig();`
-
-## Inputs
-- Component requiring awareness of video context
-
-## Outputs
-- Relative animation calculations
-
-## Dependencies
-- Remotion
-- React
-
-## Execution Steps
-1. Invoke `useVideoConfig()` to extract `fps` and `durationInFrames`.
-2. Calculate animation exit points dynamically (e.g., `durationInFrames - 30`).
-3. Use `fps` to configure exact `spring()` physics durations.
-4. Scale internal component layouts based on `width` and `height`.
-5. Eliminate hard-coded frame numbers for reusability.
-
-## Example Usage
-`Make the exit animation relative to the total duration using remotion-video-config-context.`

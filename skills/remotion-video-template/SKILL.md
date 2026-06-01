@@ -1,9 +1,34 @@
 ---
 name: remotion-video-template
-description: A full, production-ready Remotion video component.
+description: A full, production-ready Remotion video component. Use when creating animated visual assets, SaaS product walkthrough videos, or title sequence cards.
+version: "1.0.0"
+verified_date: 2026-06-01
+category: core
 ---
 
-## Coffee SaaS Video Template
+# Remotion Video Template
+
+## Purpose
+Provide copy-pasteable visual template code blocks for building premium, responsive, and beautifully styled video scenes in React.
+
+## When to Use This Skill
+- Constructing the primary visual presentation layers of a video clip.
+- Animating display headlines and sub-headers over an absolute color fill.
+
+## Output Format / Delivery
+Provide compliant visual presentation layout components with correct React properties.
+
+## Behavior Rules
+1. **Always use AbsoluteFill** for top-level presentation screens.
+2. **Never leave hardcoded font scales** without responsive viewport containment.
+
+## Maintenance Notes
+This skill is locked for standard Remotion layouts.
+
+---
+
+## Phase 1: Video Template Setup
+
 ```tsx
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
 
