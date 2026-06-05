@@ -10,7 +10,7 @@
 <br/>
 <img src="https://img.shields.io/badge/3D_%26_Motion-Three.js_%7C_GSAP_%7C_Framer-3B82F6?style=for-the-badge&logo=threedotjs&logoColor=white" />
 <img src="https://img.shields.io/badge/CI%2FCD_%26_DevOps-Docker_%7C_Vercel_%7C_Railway-F59E0B?style=for-the-badge&logo=docker&logoColor=white" />
-<img src="https://img.shields.io/badge/40_Loaded_Skills-Lazy--Load_On_Demand-059669?style=for-the-badge&logo=stackblitz&logoColor=white" />
+<img src="https://img.shields.io/badge/39_Loaded_Skills-Lazy--Load_On_Demand-059669?style=for-the-badge&logo=stackblitz&logoColor=white" />
 
 <br/><br/>
 
@@ -155,10 +155,10 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 
 ## Skill Library
 
-**40 production-grade skills**, lazy-loaded on demand. Budget: **0** for trivial tasks / **2** for simple / **3** max for complex. Full routing index lives in `skills/CAPABILITIES.md`.
+**39 production-grade skills**, lazy-loaded on demand. Budget: **0** for trivial tasks / **2** for simple / **3** max for complex. Full routing index lives in `skills/CAPABILITIES.md`.
 
 <details>
-<summary><b>Frontend and Motion</b> -- 16 skills</summary>
+<summary><b>Frontend and Motion</b> -- 15 skills</summary>
 <br/>
 
 | Skill | Purpose |
@@ -171,7 +171,6 @@ Six specialized agents. One active at a time. Each brings a distinct engineering
 | `motion-accessibility` | WCAG AA vestibular safety, reduced-motion fallbacks |
 | `threejs-r3f-fundamentals` | Canvas settings, lighting, GLB model loaders |
 | `webgl-shader-basics` | Vertex/fragment uniforms, GLSL custom noise |
-| `ecc-aesthetic-tones` | Monospace brutalism, minimal pastels, glassmorphism |
 | `ecc-design-critique` | Descender grid alignment, contrast audits |
 | `ecc-hydration-performance` | Fontaine CLS overrides, hydration mount traps |
 | `ecc-taste-dials` | BRIEF inference, DESIGN_VARIANCE motion dials |
@@ -371,7 +370,7 @@ The globe below shows the full system topology. DAWG OS sits at the center. Agen
 |   +-- frontend.md    +-- backend.md    +-- api.md
 |   +-- database.md    +-- project-structure.md   +-- done-criteria.md
 |
-+-- skills/                      # 40 lazy-loaded skill modules
++-- skills/                      # 39 lazy-loaded skill modules
 |   +-- <skill-name>/SKILL.md
 |
 +-- skill-system/                # Skill creation and maintenance

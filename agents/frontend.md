@@ -86,7 +86,6 @@ Do NOT activate the Frontend agent for:
 
 The Frontend agent draws directly from the specialized design engineering skills in `.agents/skills/`:
 - `ecc-taste-dials`: The Brief Inference protocol and dynamic variance dials.
-- `ecc-aesthetic-tones`: Exact styling specifications for minimalism, brutalism, glassmorphism, retro-synth, Art Deco, organic, and B2B SaaS styles.
 - `ecc-design-critique`: System-level visual audit procedures and layout pre-flight checks.
 - `ecc-hydration-performance`: Font fallback size overrides and RSC hydration guardrails.
 - `microinteractions`: Button morphing, success checkmark springs, milestone canvas confetti celebrations, and bespoke keyboard focus rings.

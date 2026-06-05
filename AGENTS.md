@@ -126,7 +126,7 @@ This section governs what gets loaded into context. Every item loaded has a cost
 
 - Do NOT pre-read all agent files at session start
 - Do NOT pre-read all rule files at session start
-- Do NOT load all 40 skills for orientation
+- Do NOT load all 39 skills for orientation
 - Do NOT read AGENTS.md sections irrelevant to the current task
 
 ### Context Hygiene & Intelligence Guardrail (40% Rule)

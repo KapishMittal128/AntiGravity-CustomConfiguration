@@ -14,7 +14,6 @@ It is used by the system to identify which skills can be loaded for a given task
 - `ecc-docker-patterns`
 - `ecc-postgres-patterns`
 - `ecc-taste-dials`
-- `ecc-aesthetic-tones`
 - `ecc-design-critique`
 - `ecc-hydration-performance`
 - `framer-motion-patterns`
@@ -68,7 +67,7 @@ It is used by the system to identify which skills can be loaded for a given task
 | REST/GraphQL API design | `api-design-principles` | `backend-dev-guidelines` |
 | Backend service logic | `backend-dev-guidelines` | `testing-quality-engineering` |
 | Frontend page architecture | `frontend-architecture-patterns` | `ecc-design-critique`, `ecc-taste-dials` |
-| UI polish / component design | `ui-design-expert` | `ecc-aesthetic-tones`, `ecc-taste-dials` |
+| UI polish / component design | `ui-design-expert` | `ecc-taste-dials` |
 | Scroll storytelling / GSAP animation | `gsap-scroll-patterns` | `motion-accessibility` |
 | Framer Motion / entrance/exit/stagger | `framer-motion-patterns` | `motion-accessibility` |
 | Page transitions (Next.js) | `framer-motion-patterns` | `frontend-architecture-patterns` |

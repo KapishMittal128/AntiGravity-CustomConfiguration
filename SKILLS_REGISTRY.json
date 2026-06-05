@@ -1,6 +1,6 @@
 {
     "version": "3.0.0",
-    "total_skills": 40,
+    "total_skills": 39,
     "skills": [
         {
             "id": "advanced-responsive-patterns",
@@ -71,13 +71,6 @@
             "description": "Brief Inference design read and Three Dials layout symmetry calibration. Use when starting any frontend layout.",
             "source_reference": "internal:antigravity-core",
             "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/ecc-taste-dials/SKILL.md"
-        },
-        {
-            "id": "ecc-aesthetic-tones",
-            "name": "Ecc Aesthetic Tones",
-            "description": "Eight designated style packs (brutalism, minimalism, glassmorphism, art deco, retro-synth) with complete color and spacing tokens. Use when choosing design systems.",
-            "source_reference": "internal:antigravity-core",
-            "file_path": "file:///C:/Users/Kapish/.antigravity/.agents/skills/ecc-aesthetic-tones/SKILL.md"
         },
         {
             "id": "ecc-design-critique",
