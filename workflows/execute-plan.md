@@ -21,7 +21,7 @@ Executes a previously approved `implementation_plan.md` phase-by-phase. Ensures 
 ### Phase 3: Transition
 1. If the phase is complete and verified, proceed to the next phase.
 2. If a blocking issue is found, stop and report to the user.
-3. Upon final completion, trigger the **AUDIT** phase as defined in `SYSTEM_ORCHESTRATION.md`.
+3. Upon final completion, trigger the **AUDIT** phase as defined in `.agents/skills/SYSTEM_ORCHESTRATION.md`.
 
 ---
 

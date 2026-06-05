@@ -13,7 +13,7 @@ from typing import Iterable
 ROOT = Path(__file__).resolve().parent
 SKILLS_DIR = ROOT / "skills"
 AGENTS_DIR = ROOT / "agents"
-COMMANDS_DIR = ROOT / "commands"
+WORKFLOWS_DIR = ROOT / "workflows"
 RULES_DIR = ROOT / "rules"
 MCPS_DIR = ROOT / "mcps"
 SETTINGS_PATH = ROOT / "settings.json"
@@ -167,10 +167,10 @@ def validate_settings(findings: list[Finding], skill_dirs: list[Path]) -> None:
     if agent_files != configured_agents:
         add(findings, "ERROR", SETTINGS_PATH, f"Configured agents {sorted(configured_agents)} do not match files {sorted(agent_files)}")
 
-    command_files = {p.stem for p in COMMANDS_DIR.glob("*.md")}
+    workflow_files = {p.stem for p in WORKFLOWS_DIR.glob("*.md")}
     configured_commands = set(settings["commands"]["available"])
-    if command_files != configured_commands:
-        add(findings, "ERROR", SETTINGS_PATH, f"Configured commands {sorted(configured_commands)} do not match files {sorted(command_files)}")
+    if workflow_files != configured_commands:
+        add(findings, "ERROR", SETTINGS_PATH, f"Configured commands {sorted(configured_commands)} do not match files {sorted(workflow_files)}")
 
     rule_files = {p.stem for p in RULES_DIR.glob("*.md")}
     configured_rules = set(settings["rules"]["enforced"])
@@ -187,7 +187,7 @@ def validate_settings(findings: list[Finding], skill_dirs: list[Path]) -> None:
 
 
 def validate_markdown_references(findings: list[Finding]) -> None:
-    md_files = list(ROOT.glob("*.md")) + list((ROOT / "skills").glob("*.md")) + list((ROOT / "mcps").glob("*.md")) + list((ROOT / "skill-system").glob("*.md"))
+    md_files = list(ROOT.glob("*.md")) + list((ROOT / "skills").glob("*.md")) + list((ROOT / "mcps").glob("*.md")) + list((ROOT / "skill-system").glob("*.md")) + list((ROOT / "workflows").glob("*.md"))
     for path in md_files:
         raw = read_text(path)
         for token in PATH_TOKEN_RE.findall(raw):

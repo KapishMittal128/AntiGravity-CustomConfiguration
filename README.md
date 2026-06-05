@@ -363,7 +363,7 @@ The globe below shows the full system topology. DAWG OS sits at the center. Agen
 |   +-- planner.md      +-- debugger.md       +-- frontend.md
 |   +-- backend.md      +-- ai-engineer.md    +-- reviewer.md
 |
-+-- commands/                    # Slash command workflows
++-- workflows/                   # Slash command workflows
 |   +-- build-feature.md    +-- fix-issue.md     +-- review-code.md
 |   +-- refactor.md         +-- ship-ui.md       +-- research.md
 |

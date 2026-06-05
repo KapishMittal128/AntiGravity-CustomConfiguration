@@ -78,7 +78,7 @@ Copy-paste this to any AI to make it act like Antigravity:
 | `agents/` | Mention `@agent-name` to force the AI to adopt a specific mindset (e.g. `@debugger` for error logs). |
 | `rules/` | If the AI produces 'slop', prompt: "Re-verify your output against `.agents/rules/frontend.md` and fix violations." |
 | `skills/` | For complex domains, prompt: "Load the `repo-analysis` skill and map the current data flow." |
-| `commands/` | Always use `/` commands for standard dev tasks to ensure the AI follows the pre-defined Phase Logic. |
+| `workflows/` | Always use `/` commands for standard dev tasks to ensure the AI follows the pre-defined Phase Logic. |
 
 ---
 *Antigravity OS v2.1. Optimized for rigorous engineering.*

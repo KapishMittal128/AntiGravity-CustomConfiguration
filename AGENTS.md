@@ -226,7 +226,7 @@ Never activate two agents simultaneously for overlapping scope. Sequence them.
 | Clean up / refactor / simplify | `refactor` |
 | Polish UI / ship production-quality frontend | `ship-ui` |
 
-Read `.agents/commands/<command>.md` and follow its phases strictly.
+Read `.agents/workflows/<command>.md` and follow its phases strictly.
 Commands replace ad-hoc workflows. Do not invent a custom sequence when a command exists.
 
 ### 6A. SLASH-COMMAND BRIDGE (OS-LEVEL COMPATIBILITY LAYER)
@@ -236,16 +236,16 @@ When a user prompt begins with a `/` followed by a known command name, treat it 
 **Registered slash commands:**
 | Slash Prefix | Resolves To |
 |-------------|-------------|
-| `/fix-issue` | `.agents/commands/fix-issue.md` |
-| `/build-feature` | `.agents/commands/build-feature.md` |
-| `/review-code` | `.agents/commands/review-code.md` |
-| `/refactor` | `.agents/commands/refactor.md` |
-| `/ship-ui` | `.agents/commands/ship-ui.md` |
-| `/research` | `.agents/commands/research.md` |
-| `/brainstorm` | `.agents/commands/brainstorm.md` |
-| `/execute-plan` | `.agents/commands/execute-plan.md` |
-| `/write-plan` | `.agents/commands/write-plan.md` |
-| `/caveman` | `.agents/skills/caveman-mode/SKILL.md` |
+| `/fix-issue` | `.agents/workflows/fix-issue.md` |
+| `/build-feature` | `.agents/workflows/build-feature.md` |
+| `/review-code` | `.agents/workflows/review-code.md` |
+| `/refactor` | `.agents/workflows/refactor.md` |
+| `/ship-ui` | `.agents/workflows/ship-ui.md` |
+| `/research` | `.agents/workflows/research.md` |
+| `/brainstorm` | `.agents/workflows/brainstorm.md` |
+| `/execute-plan` | `.agents/workflows/execute-plan.md` |
+| `/write-plan` | `.agents/workflows/write-plan.md` |
+| `/caveman` | `.agents/workflows/caveman.md` |
 
 
 **Execution rules:**
