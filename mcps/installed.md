@@ -20,6 +20,7 @@ All MCPs below are pre-cached via npx and configured in your MCP settings.
 | **n8n** | `@nazcamedia/n8n-mcp-server` | ✅ Ready | Workflow automation triggering |
 | **Sequential Thinking** | `@modelcontextprotocol/server-sequential-thinking` | ✅ Ready | Advanced step-by-step logic and problem breakdown |
 | **Linear** | `@touchlab/linear-mcp-integration` | ✅ Ready | Autonomous project and backlog management |
+| **Roblox Studio** | Local `mcp.bat` wrapper | ✅ Ready | Native engine API integration, instance manipulation, and Luau execution |
 
 ---
 
@@ -55,6 +56,6 @@ All MCPs below are pre-cached via npx and configured in your MCP settings.
 
 ---
 
-**Total Configured:** 14 MCPs
-**Fully Ready:** 12
+**Total Configured:** 15 MCPs
+**Fully Ready:** 13
 **Needs Credentials:** 2
