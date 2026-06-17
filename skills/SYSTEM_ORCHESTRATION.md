@@ -45,7 +45,13 @@ If a prompt is incomplete, overly broad, multi-intent, or doesn't map to a clear
 Antigravity must sequence work strictly across the following operational phases in order:
 1.  **PLANNING:** `repo-analysis`, `spec-driven-build`, `api-design-principles`. MUST occur before implementation.
 2.  **BUILD:** `backend-dev-guidelines`, `ui-design-expert`, `modern-database-orchestration`, `ai-rag-architectures`. Actual file mutation phase.
-3.  **EVALUATE:** Reviewer agent in Evaluator Mode. Automatically triggered after BUILD completes. Checks output against acceptance criteria. Routes failures back to BUILD agent with specific feedback. Maximum 3 retry iterations before escalating to user.
+3.  **EVALUATE:** Two-stage quality gate triggered automatically after BUILD.
+    - **Stage 1 — Mechanical Verification (MANDATORY):** Run all available automated checks before any subjective review. Execute in this order, skip any that don't apply to the project:
+      1. Type checker: `npx tsc --noEmit` (TypeScript projects) or equivalent
+      2. Linter: `npm run lint` or `npx eslint .` (JS/TS projects), `python -m ruff check` (Python projects)
+      3. Tests: `npm run test` or `python -m pytest` (if test suite exists)
+    - If any mechanical check fails: fix the failure BEFORE proceeding. Do not pass to Stage 2 with broken types or failing tests.
+    - **Stage 2 — Reviewer Evaluation:** Reviewer agent in Evaluator Mode checks output against acceptance criteria. Returns PASS / NEEDS_REVISION / FAIL. Routes failures back to BUILD agent. Maximum 3 retry iterations before escalating to user.
 4.  **AUDIT:** `repo-analysis`, `testing-quality-engineering`. MUST occur after EVALUATE passes but before SHIP.
 5.  **SHIP:** `backend-dev-guidelines`, `devops-deployment-automation`.
 

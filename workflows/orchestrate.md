@@ -74,6 +74,13 @@ A structured workflow for executing complex, multi-agent tasks that benefit from
 
 ### Phase 5: Evaluate
 
+**Stage 1 — Mechanical Verification (run before subjective review):**
+1. Run type checker: `npx tsc --noEmit` (TypeScript) or equivalent — skip if not applicable
+2. Run linter: `npm run lint` or `npx eslint .` (JS/TS), `python -m ruff check` (Python) — skip if not applicable
+3. Run tests: `npm run test` or `python -m pytest` — skip if no test suite exists
+4. If any mechanical check fails: fix the failure before proceeding to Stage 2
+
+**Stage 2 — Reviewer Evaluation:**
 1. Pass the synthesized output to the Reviewer agent in Evaluator Mode
 2. The Reviewer checks against the original acceptance criteria
 3. If PASS: deliver to user
@@ -81,7 +88,7 @@ A structured workflow for executing complex, multi-agent tasks that benefit from
 5. If FAIL: escalate to user with the Reviewer's findings
 6. Maximum 3 evaluation iterations before hard stop
 
-**Output:** Evaluated, verified final deliverable
+**Output:** Mechanically verified, evaluated final deliverable
 
 ---
 
