@@ -94,7 +94,7 @@ This is NOT a general-purpose chat assistant. It is an **operational build syste
 
 For non-trivial, multi-skill, or multi-step tasks, Antigravity delegates routing and loop execution to the core OS infrastructure:
 
-1. **Task Decomposition & Phase Logic:** Strictly governed by `.agents/skills/SYSTEM_ORCHESTRATION.md`. Use its explicit phase discipline (`PLANNING` -> `BUILD` -> `AUDIT` -> `SHIP`).
+1. **Task Decomposition & Phase Logic:** Strictly governed by `.agents/skills/SYSTEM_ORCHESTRATION.md`. Use its explicit phase discipline (`PLANNING` -> `BUILD` -> `EVALUATE` -> `AUDIT` -> `SHIP`).
 2. **Runtime Execution & Checkpointing:** Strictly governed by `.agents/skills/RUNTIME_CONTROL.md`. It enforces token fatigue limits and phase lockouts.
 
 Do not invent an ad-hoc loop like "Plan -> Inspect -> Execute." Follow the hard OS infrastructure.
@@ -203,14 +203,18 @@ Do NOT use `STATE.md` as a transient journal. It is strictly for long-term strat
 | Situation | Agent |
 |-----------|-------|
 | Scope unclear, multiple steps, no clear start point | **planner** |
+| Multi-agent task, parallelizable work, concurrent dispatch needed | **planner** (Orchestrator Mode) |
 | Something is broken or behaving unexpectedly | **debugger** |
 | UI, layout, page, component, CSS | **frontend** |
 | API, service, auth, data access, backend logic | **backend** |
 | LLM integration, prompt system, RAG, AI pipeline | **ai-engineer** |
 | Code critique, PR review, quality audit | **reviewer** |
+| Post-BUILD quality gate (auto-triggered) | **reviewer** (Evaluator Mode) |
 
 Read `.agents/agents/<agent>.md` ONLY when first activating that agent.
 Never activate two agents simultaneously for overlapping scope. Sequence them.
+
+**Orchestrator Mode:** When the Planner detects a task with 2+ independent work units that have no shared state, it activates Orchestrator Mode. In this mode, it dispatches parallel workers, monitors their execution, and synthesizes results. See `agents/planner.md` for the full dispatch protocol.
 
 ---
 
@@ -244,6 +248,7 @@ When a user prompt begins with a `/` followed by a known command name, treat it 
 | `/execute-plan` | `.agents/workflows/execute-plan.md` |
 | `/write-plan` | `.agents/workflows/write-plan.md` |
 | `/caveman` | `.agents/workflows/caveman.md` |
+| `/orchestrate` | `.agents/workflows/orchestrate.md` |
 
 
 **Execution rules (HARD SYSTEM CONSTRAINT):**
@@ -449,12 +454,13 @@ Task complexity?    → Gate check (Section 0)
   Trivial?          → FAST PATH (no workflow, no skills)
   Non-trivial?      → FULL WORKFLOW
 
-Full workflow:      PLANNING → BUILD → AUDIT → SHIP (via SYSTEM_ORCHESTRATION.md)
+Full workflow:      PLANNING → BUILD → EVALUATE → AUDIT → SHIP (via SYSTEM_ORCHESTRATION.md)
 
 Task type           → Agent              → Command          → Rules
 ────────────────────────────────────────────────────────────────────
 Bug / failure       → debugger           → fix-issue         → relevant
 New feature         → planner → backend  → build-feature     → backend/api
+Parallel execution  → planner (orch.)    → orchestrate       → all
 UI polish           → frontend           → ship-ui           → frontend
 Code review         → reviewer           → review-code       → all
 Refactoring         → reviewer           → refactor          → all

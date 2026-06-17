@@ -35,6 +35,8 @@ A structured workflow for implementing a new feature cleanly inside an existing 
 
 **Output:** Integration point identified, existing patterns understood
 
+**Orchestration Check:** If this feature touches 3+ independent files/systems with no shared state (e.g., separate frontend component + backend endpoint + database migration), escalate to `/orchestrate` mode for parallel dispatch. Do not force sequential execution when the work units are independent.
+
 ---
 
 ### Phase 3: Define the Integration Path

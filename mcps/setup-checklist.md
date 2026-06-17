@@ -1,7 +1,7 @@
 # MCP Setup Checklist — External Credentials Required
 
 Complete each item below to activate the corresponding MCP.
-After obtaining each credential, update `mcp_config.template.json` or your real MCP config by replacing the placeholder value.
+After obtaining each credential, update your MCP configuration by replacing the placeholder value.
 
 ---
 
@@ -13,7 +13,7 @@ After obtaining each credential, update `mcp_config.template.json` or your real 
 2. Format: `postgresql://user:password@host:port/database`
 
 **Where to put it:**
-In `mcp_config.template.json` → `postgres` → `env` → `POSTGRES_CONNECTION_STRING`
+In your MCP config → `postgres` → `env` → `POSTGRES_CONNECTION_STRING`
 
 **Why needed:** Enables direct SQL queries, schema inspection, and database management.
 
@@ -30,7 +30,7 @@ In `mcp_config.template.json` → `postgres` → `env` → `POSTGRES_CONNECTION_
 3. Provide the absolute path to your Obsidian vault
 
 **Where to put it:**
-In `mcp_config.template.json` → `obsidian`
+In your MCP config → `obsidian`
 
 **Why needed:** Allows the OS to read/write directly to your personal knowledge base.
 

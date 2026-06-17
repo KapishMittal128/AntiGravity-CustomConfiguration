@@ -1,6 +1,6 @@
 # Installed MCPs — Antigravity Global Stack
 
-All MCPs below are pre-cached via npx and represented in `mcp_config.template.json`.
+All MCPs below are pre-cached via npx and configured in your MCP settings.
 
 ---
 
@@ -55,6 +55,6 @@ All MCPs below are pre-cached via npx and represented in `mcp_config.template.js
 
 ---
 
-**Total Configured:** 14 MCPs in `mcp_config.template.json`
+**Total Configured:** 14 MCPs
 **Fully Ready:** 12
 **Needs Credentials:** 2

@@ -53,7 +53,7 @@ It now defaults to Windows-native PowerShell hooks instead of requiring a Unix s
 
 - **Policy surface is still text-heavy.** The OS is clearer than before, but `AGENTS.md` remains dense.
 - **Enforcement is partly social.** Many guarantees still rely on instruction-following rather than hard mechanical locks.
-- **Historical support docs can stale again.** `evaluation.md` and `versionperformance.md` must stay concise or they will reintroduce overlap.
+- **Historical support docs can stale again.** `evaluation.md` must stay concise or it will reintroduce overlap.
 - **Validator scope is only local-file integrity.** It does not yet test behavioral correctness of every rule.
 - **Global copy drift remains possible.** If you edit the source `.agents` workspace, you still need to refresh the global copy manually or via your install workflow.
 
@@ -95,7 +95,7 @@ If you keep one mental model, keep this:
 - **v2.3.0**
   - Compressed non-skill docs into a cleaner authority structure
   - Replaced long overlapping evaluation text with a concise current-state snapshot
-  - Recast `versionperformance.md` as a historical benchmark note
+  - Compressed non-skill docs into a cleaner authority structure
 - **v2.2.1**
   - Runtime consistency patch
   - Skill inventory repair

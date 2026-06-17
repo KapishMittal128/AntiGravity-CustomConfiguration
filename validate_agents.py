@@ -54,6 +54,7 @@ ALLOWED_NON_SKILL_TOKENS = {
     "refactor",
     "ship-ui",
     "research",
+    "orchestrate",
 }
 MCP_ACTIVATION_ALIASES = {
     "filesystem",
@@ -209,7 +210,6 @@ def validate_skill_token_references(findings: list[Finding], skill_names: set[st
     doc_paths = [
         ROOT / "AGENTS.md",
         ROOT / "evaluation.md",
-        ROOT / "versionperformance.md",
         ROOT / "skills" / "CAPABILITIES.md",
         ROOT / "skills" / "SYSTEM_ORCHESTRATION.md",
     ]

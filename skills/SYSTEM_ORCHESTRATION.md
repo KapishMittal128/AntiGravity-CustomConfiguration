@@ -45,8 +45,9 @@ If a prompt is incomplete, overly broad, multi-intent, or doesn't map to a clear
 Antigravity must sequence work strictly across the following operational phases in order:
 1.  **PLANNING:** `repo-analysis`, `spec-driven-build`, `api-design-principles`. MUST occur before implementation.
 2.  **BUILD:** `backend-dev-guidelines`, `ui-design-expert`, `modern-database-orchestration`, `ai-rag-architectures`. Actual file mutation phase.
-3.  **AUDIT:** `repo-analysis`, `testing-quality-engineering`. MUST occur after BUILD but before SHIP.
-4.  **SHIP:** `backend-dev-guidelines`, `devops-deployment-automation`.
+3.  **EVALUATE:** Reviewer agent in Evaluator Mode. Automatically triggered after BUILD completes. Checks output against acceptance criteria. Routes failures back to BUILD agent with specific feedback. Maximum 3 retry iterations before escalating to user.
+4.  **AUDIT:** `repo-analysis`, `testing-quality-engineering`. MUST occur after EVALUATE passes but before SHIP.
+5.  **SHIP:** `backend-dev-guidelines`, `devops-deployment-automation`.
 
 ## 8. "Stop Conditions" & Runtime Discipline
 While this document defines *when* skills stop naturally, the **physical enforcement** of cycle limits and context boundaries is governed by the global RUNTIME_CONTROL logic.

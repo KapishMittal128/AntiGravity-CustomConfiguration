@@ -30,7 +30,6 @@
 ### Changed
 - Compressed non-skill docs into a cleaner authority structure
 - Replaced long overlapping evaluation text with a concise current-state snapshot
-- Recast `versionperformance.md` as a historical benchmark note
 
 ## [2.2.0] - 2026-04-28
 ### Fixed

@@ -100,7 +100,7 @@
   },
   "commands": {
     "directory": ".agents/workflows",
-    "available": ["fix-issue", "build-feature", "review-code", "refactor", "ship-ui", "research", "brainstorm", "execute-plan", "write-plan", "caveman"],
+    "available": ["fix-issue", "build-feature", "review-code", "refactor", "ship-ui", "research", "brainstorm", "execute-plan", "write-plan", "caveman", "orchestrate"],
     "slashBridge": {
       "enabled": true,
       "description": "Slash-prefixed prompts (e.g. /build-feature) are automatically routed to .agents/workflows/<name>.md via AGENTS.md Section 6A.",
