@@ -3,7 +3,7 @@
 This file is a machine-readable index of all available skills in the Antigravity OS.
 It is used by the system to identify which skills can be loaded for a given task.
 
-## Available Skills (33 Master Skills — Consolidated Registry)
+## Available Skills (39 Master Skills — Consolidated Registry)
 
 ### TIER 1 — Production Safe
 - `advanced-responsive-patterns`

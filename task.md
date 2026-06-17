@@ -1,8 +1,18 @@
-# Task Tracker — Global Template Fallback
+# TACTICAL EXECUTION (task.md)
 
-This file is a placeholder for global system checks and tracks immediate execution tasks.
-In a local project directory, this represents the current session to-do list and progress checkpoint tracker.
+> **CORE DIRECTIVE:** This file is the short-term memory for the current session. 
+> Use it to break down complex workflows, track progress, and hand off context if a session resets. 
+> When a feature is completed, summarize architectural changes to `STATE.md` and clear this file.
 
 ---
 
-- [ ] Awaiting project initialization and linker setup
+## CURRENT FRONTIER
+*(If context gets lost, this is exactly what we were doing right now)*
+- **Active Goal:** [Describe the immediate goal]
+
+## TASK LIST
+- [ ] **Step 1:** [Actionable item]
+- [ ] **Step 2:** [Actionable item]
+
+## ACTIVE BUGS / BLOCKS
+- [ ] [Bug description and error log snippet]

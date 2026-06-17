@@ -71,6 +71,19 @@ A structured workflow for implementing a new feature cleanly inside an existing 
 
 ---
 
+
+### Phase 5: POST-MORTEM (Self-Improvement)
+
+1. Review the terminal history for this session. Did we experience Terminal Thrashing (a command failing 2+ times before success)?
+2. Did the user explicitly correct a behavior or reject an action?
+3. If yes to either, extract the specific failure and the working fix.
+4. Append it as a strict IF/THEN constraint to \./project_heuristics.md\.
+5. If the heuristic is universally applicable across all projects, suggest the user run \/propose-os-upgrade\.
+
+**Output:** Updated heuristics file (if learning occurred).
+
+---
+
 ## Output Expectations
 
 - All changed files listed with a brief description of what changed

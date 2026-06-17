@@ -10,7 +10,7 @@ This guide provides high-fidelity strategies for utilizing Antigravity OS to its
 The `scripts/ag-init.ps1` script creates a **Junction Link** (`.agents/`). 
 1. **Detection:** When an AI agent (like Gemini, Claude, or ChatGPT) reads the workspace, it sees the `.agents/` directory.
 2. **Authority:** The presence of `AGENTS.md` inside that directory triggers a "Global Rule" in the AI's internal logic. It realizes it is no longer a general assistant but a **Component of Antigravity OS**.
-3. **Execution:** It will immediately prioritize Section 0 (Complexity Gate) and apply the 17 Master Skills.
+3. **Execution:** It will immediately prioritize Section 0 (Complexity Gate) and apply the 39 Master Skills.
 
 ### Initialization Workflow
 1. Create your project folder.
@@ -30,7 +30,7 @@ Provide your raw ideas and ask for a professional PRD.
 
 ### Step 2: The Technical Specification
 Once the PRD is ready, convert it to an OS-compliant spec.
-> **Prompt:** "`@planner` Take this PRD and generate a Technical Specification. Map the features to the Antigravity 17 Master Skills (e.g., frontend-architecture-patterns for the shell, api-design-principles for the backend). Produce a File Structure and Data Model."
+> **Prompt:** "`@planner` Take this PRD and generate a Technical Specification. Map the features to the Antigravity 39 Master Skills (e.g., frontend-architecture-patterns for the shell, api-design-principles for the backend). Produce a File Structure and Data Model."
 
 ### Step 3: Seeding State
 > **Prompt:** "Initialize STATE.md and task.md at the project root based on this spec. Record the stack choices and primary architecture patterns."
@@ -67,7 +67,7 @@ If you are using an AI that doesn't have direct filesystem access to the kernel,
 
 ### The "System Override" Prompt:
 Copy-paste this to any AI to make it act like Antigravity:
-> "Act as Antigravity OS. I will provide you with a Kernel Configuration (`AGENTS.md`) and a Skill Registry (`skills/CAPABILITIES.md`). You must strictly follow the Complexity Gate (Fast Path vs Full Workflow). Do not use filler phrases. Use the 17 Master Skills provided. All output must be Practical, Clean, and Implementation-ready. Acknowledge your transition to Antigravity OS."
+> "Act as Antigravity OS. I will provide you with a Kernel Configuration (`AGENTS.md`) and a Skill Registry (`skills/CAPABILITIES.md`). You must strictly follow the Complexity Gate (Fast Path vs Full Workflow). Do not use filler phrases. Use the 39 Master Skills provided. All output must be Practical, Clean, and Implementation-ready. Acknowledge your transition to Antigravity OS."
 
 ---
 
@@ -81,4 +81,4 @@ Copy-paste this to any AI to make it act like Antigravity:
 | `workflows/` | Always use `/` commands for standard dev tasks to ensure the AI follows the pre-defined Phase Logic. |
 
 ---
-*Antigravity OS v2.1. Optimized for rigorous engineering.*
+*Antigravity OS v2.6. Optimized for rigorous engineering.*

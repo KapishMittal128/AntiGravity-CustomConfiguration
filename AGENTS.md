@@ -16,8 +16,6 @@ Use each file for one specific job:
 
 Non-authoritative support docs:
 - `evaluation.md` — concise current-state assessment
-- `versionperformance.md` — historical benchmark snapshot
-- `metrics.md` — compact execution log
 
 If a support doc disagrees with an authority file, the authority file wins.
 
@@ -186,13 +184,13 @@ State management is explicitly governed by the execution rules in `.agents/skill
 
 ### State File Resolution Order
 State files are **project-specific**, not global. Look for them in this order:
-1. **Project root:** `./STATE.md`, `./task.md`, `./implementation_plan.md`
-2. **Fallback:** `.agents/STATE.md`, `.agents/task.md`, `.agents/implementation_plan.md`
+1. **Project root:** `./STATE.md`, `./task.md`, `./implementation_plan.md`, `./project_heuristics.md`
+2. **Fallback:** `.agents/STATE.md`, `.agents/task.md`, `.agents/implementation_plan.md`, `.agents/project_heuristics.md`
 
 Always prefer the project-root copy. The project initializer script scaffolds these locally for each project.
 
 You must:
-1. **Load State:** Always preload `STATE.md` and `task.md` at the start of a session (if they exist).
+1. **Load State:** Always preload `STATE.md`, `task.md`, and `project_heuristics.md` at the start of a session (if they exist).
 2. **Dump State:** Always update them before returning the final execution summary of a session, reflecting architectural changes or task completion.
 3. **Write to project root:** When creating or updating state files, write to the project root, not inside `.agents/`.
 
@@ -248,14 +246,15 @@ When a user prompt begins with a `/` followed by a known command name, treat it 
 | `/caveman` | `.agents/workflows/caveman.md` |
 
 
-**Execution rules:**
-1. Strip the `/command` prefix from the prompt. The remainder is the task description.
-2. Run the Complexity Gate (Section 0) on the task description **before** loading the command.
-3. If the Complexity Gate classifies the task as **Fast Path** and no risk condition applies, execute directly without loading the full command workflow. The slash prefix is a routing hint, not a mandate to run all phases for trivial work.
-4. If the Complexity Gate classifies the task as **Full Workflow**, read the resolved command file and follow its phases strictly.
-5. Agent routing (Section 5), Lazy Load Protocol (Section 3), and Rule Enforcement (Section 7) all still apply.
-6. Prompts that do NOT start with `/` are unaffected — route them through normal AGENTS.md logic.
-7. Unknown `/` prefixes that do not match the table above are NOT treated as commands — pass them through as normal prompts.
+**Execution rules (HARD SYSTEM CONSTRAINT):**
+1. **CRITICAL TRIGGER:** If a prompt begins with a registered `/command`, you MUST immediately read the corresponding `.agents/workflows/<command>.md` file into context. **Do NOT execute from memory. Do NOT guess the workflow.**
+2. Strip the `/command` prefix from the prompt. The remainder is the user's target task.
+3. Run the Complexity Gate (Section 0) on the task description before executing the workflow.
+4. If the task is **Fast Path**, the slash command is just a routing hint—execute directly without running all phases of the workflow file.
+5. If the task is **Full Workflow**, you MUST follow the phases outlined in the loaded workflow file EXACTLY, step-by-step.
+6. Do not blend workflows. If you load `/brainstorm`, you execute only what is in `.agents/workflows/brainstorm.md`.
+7. Agent routing (Section 5), Lazy Load Protocol (Section 3), and Rule Enforcement (Section 7) all remain fully active.
+8. Prompts that do NOT start with `/` are unaffected — pass them through as normal prompts.
 
 ---
 
@@ -412,8 +411,9 @@ At the start of any non-trivial session, before taking any action:
 
 1. Read `STATE.md` (check project root first: `./STATE.md`, then `.agents/STATE.md`)
 2. Read `task.md` (check project root first: `./task.md`, then `.agents/task.md`)
-3. Identify: **current phase**, **last major decision**, **next logical step**
-4. Resume from that point — do not reconstruct context from scratch
+3. Read `project_heuristics.md` (check project root first: `./project_heuristics.md`) and treat these as absolute constraints.
+4. Identify: **current phase**, **last major decision**, **next logical step**
+5. Resume from that point — do not reconstruct context from scratch
 
 **Do NOT:**
 - Re-analyze the full project from zero when STATE.md exists

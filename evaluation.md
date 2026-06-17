@@ -1,7 +1,7 @@
 # evaluation.md — Antigravity OS Current-State Snapshot
 
-**Current Version:** v2.5.0  
-**Last Updated:** 2026-04-28
+**Current Version:** v2.6.0  
+**Last Updated:** 2026-06-17
 
 This file is a concise assessment of the current `.agents` operating system.
 It is not a policy source. `AGENTS.md`, `.agents/skills/RUNTIME_CONTROL.md`, and `.agents/skills/SYSTEM_ORCHESTRATION.md` remain authoritative.
@@ -41,7 +41,7 @@ It now defaults to Windows-native PowerShell hooks instead of requiring a Unix s
 - Removed runtime-reference drift by standardizing on `.agents/skills/RUNTIME_CONTROL.md`
 - Added compatibility aliases for legacy filenames
 - Repaired the missing `repo-analysis` skill
-- Normalized all 25 live skills to the same template
+- Normalized all 39 live skills to the same template
 - Aligned MCP activation packs with installed MCP docs
 - Reduced doc drift between support docs and real filesystem state
 - Added `validate_agents.py` and wired it into the pre-commit hook path
@@ -77,6 +77,13 @@ If you keep one mental model, keep this:
 
 ## 6. Changelog
 
+- **v2.6.0**
+  - Fixed /brainstorm slash command with hard system constraint in AGENTS.md Section 6A
+  - Built context scaffold protocol (STATE.md strategic truth + task.md tactical execution templates)
+  - Created and reverted specialist agents (forge/bastion/oracle) after evaluation confirmed the original 6-agent system is superior
+  - Cleaned all remnant references from AGENTS.md routing tables
+  - Fixed brainstorm.md path reference that caused validate_agents.py to fail
+  - Synchronized all stale counts and version numbers across support docs
 - **v2.5.0**
   - Added PowerShell hook equivalents for pre-commit, state sync, and lint-on-save
   - Switched settings and docs to PowerShell-first enforcement on Windows
@@ -92,4 +99,4 @@ If you keep one mental model, keep this:
 - **v2.2.1**
   - Runtime consistency patch
   - Skill inventory repair
-  - Skill normalization across 25 live skills
+  - Skill normalization across 39 live skills

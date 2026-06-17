@@ -1,7 +1,6 @@
 # MCP Activation Packs — Antigravity OS
 
 These packs define which MCPs should be active per task type.
-Reference these from `prompts/tools.md` Section 5 (Minimal MCP Packs) when selecting tools.
 
 ---
 
