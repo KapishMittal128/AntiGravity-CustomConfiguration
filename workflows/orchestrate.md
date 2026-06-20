@@ -1,123 +1,254 @@
 # Command: /orchestrate
 
 ## Purpose
+A structured workflow for complex, multi-agent tasks that benefit from parallel dispatch. Use when a goal can be decomposed into independent work units that run concurrently rather than sequentially.
 
-A structured workflow for executing complex, multi-agent tasks that benefit from parallel dispatch. Use this when a goal can be decomposed into independent work units that should run concurrently rather than sequentially.
+---
+
+## Applicability
+Requires agent runtimes exposing: `run_command` (async), `browser_subagent`, `grep_search`, `view_file`, and a scheduler (`schedule`/`sleep`). Otherwise use the **Sequential Fallback** at the bottom.
+
+---
 
 ## When to Use
-
-- A task spans 3+ independent files or systems with no shared state
-- Multiple agent domains are involved (e.g., frontend + backend + research)
-- The user explicitly requests parallel execution
-- The Planner detects parallelizable work during decomposition
-- A long-running process (build, test suite) should run in the background while other work continues
-
----
-
-## Execution Workflow
-
-### Phase 1: Decompose
-
-1. Break the goal into the smallest independent work units
-2. For each work unit, define:
-   - **Objective**: What specific outcome is expected
-   - **Agent**: Which execution agent owns this unit (frontend, backend, debugger, reviewer)
-   - **Files**: Which files/directories this worker will touch
-   - **Acceptance Criteria**: How to verify this unit is complete
-3. Classify each work unit:
-   - `PARALLEL` -- no shared files, no data dependencies, can run concurrently
-   - `SEQUENTIAL` -- depends on output of another unit
-   - `BACKGROUND` -- non-blocking, results needed later
-4. Verify: no two PARALLEL units touch the same file. If they do, reclassify one as SEQUENTIAL.
-
-**Output:** Numbered work unit list with classifications and file ownership
+- Task spans 3+ independent files or systems with no shared state
+- Multiple agent domains involved (e.g., frontend + backend + research)
+- User explicitly requests parallel execution
+- Planner detects parallelizable work during decomposition
+- A long-running process (build, test suite) should run in background while other work continues
 
 ---
 
-### Phase 2: Dispatch
+## Phase 1: Decompose
 
-1. Launch all PARALLEL units concurrently:
-   - Terminal tasks: use `run_command` with `WaitMsBeforeAsync` set appropriately
-   - Research tasks: use `browser_subagent` for web research
-   - Analysis tasks: use `grep_search` and `view_file` in rapid succession
-2. Launch BACKGROUND units and set a `schedule` timer for the expected completion window
-3. Hold SEQUENTIAL units until their dependencies complete
-4. Track each unit's status: DISPATCHED / RUNNING / COMPLETE / FAILED
+### 1.1 — Define work units
+For each unit define: **ID** (slug), **Objective**, **Agent** (`frontend`/`backend`/`debugger`/`reviewer`/`research`), **Files** (exact paths), **Acceptance Criteria** (testable, not vague), **Dependencies** (unit IDs or empty).
 
-**Output:** All workers dispatched with status tracking
+**Example:**
+| ID | Agent | Files | Acceptance Criteria | Deps |
+|---|---|---|---|---|
+| `api-oauth` | backend | `src/auth/oauth.ts` | `/auth/google` redirects, token exchanged, session created | — |
+| `fe-avatar` | frontend | `src/components/Avatar.tsx` | Renders with fallback initials, accepts `imageUrl` prop | — |
+| `db-schema` | backend | `migrations/004_avatar.sql` | Migration runs, column present in schema | — |
+| `fe-wire` | frontend | `src/components/Header.tsx` | Avatar displays logged-in user photo | `api-oauth`, `fe-avatar`, `db-schema` |
 
----
+### 1.2 — Classify
+- `PARALLEL` — no shared files, no data dependencies, run now
+- `SEQUENTIAL` — depends on another unit's output; blocked until complete
+- `BACKGROUND` — non-blocking; results needed before Phase 4 only
 
-### Phase 3: Monitor
+### 1.3 — File-ownership verification
+Build a table mapping every file to exactly one unit. If two PARALLEL/BACKGROUND units claim the same file: reclassify the consumer as SEQUENTIAL, or if both modify independently, add a SEQUENTIAL merge unit after both complete.
 
-1. Do NOT poll task status in a loop -- wait for system notifications or timer fires
-2. When a worker completes, collect its output
-3. If a worker fails:
-   - Read the error output
-   - Decide: retry (max 2 retries) or abort that unit and continue with others
-4. Continue executing SEQUENTIAL units as their dependencies become available
+**No two PARALLEL or BACKGROUND units may own the same file. Absolute.**
 
-**Output:** All workers complete (or failed with documented reasons)
+### 1.4 — Concurrent task cap
+If PARALLEL + BACKGROUND count exceeds **4**, promote lowest-priority units to SEQUENTIAL. Cap exists because beyond 4, context-window pressure and tool-call interleaving increase failure rates.
 
----
-
-### Phase 4: Synthesize
-
-1. Merge all worker outputs into a single unified deliverable
-2. Resolve any conflicts between worker outputs (e.g., two workers both modified a shared config)
-3. Verify the merged result is internally consistent
-4. Present the synthesized output to the user
-
-**Output:** Unified deliverable combining all worker results
+**Output:** Work unit list with IDs, classifications, file ownership table, acceptance criteria.
 
 ---
 
-### Phase 5: Evaluate
+## Phase 2: Dispatch
 
-**Stage 1 — Mechanical Verification (run before subjective review):**
-1. Run type checker: `npx tsc --noEmit` (TypeScript) or equivalent — skip if not applicable
-2. Run linter: `npm run lint` or `npx eslint .` (JS/TS), `python -m ruff check` (Python) — skip if not applicable
-3. Run tests: `npm run test` or `python -m pytest` — skip if no test suite exists
-4. If any mechanical check fails: fix the failure before proceeding to Stage 2
+### 2.1 — Pre-dispatch checklist (mandatory)
+- [ ] Every unit has explicit, testable acceptance criteria
+- [ ] No two PARALLEL/BACKGROUND units share a file
+- [ ] SEQUENTIAL units are NOT in the dispatch queue
+- [ ] Concurrent count ≤ 4
+- [ ] Required environment primitives confirmed available
 
-**Stage 2 — Reviewer Evaluation:**
-1. Pass the synthesized output to the Reviewer agent in Evaluator Mode
-2. The Reviewer checks against the original acceptance criteria
-3. If PASS: deliver to user
-4. If NEEDS_REVISION: route the specific failing component back to its execution agent
-5. If FAIL: escalate to user with the Reviewer's findings
-6. Maximum 3 evaluation iterations before hard stop
+Resolve all failures before proceeding. No partial launches.
 
-**Output:** Mechanically verified, evaluated final deliverable
+### 2.2 — Launch PARALLEL units
+- Terminal: `run_command` with `WaitMsBeforeAsync` tuned to task (200 ms scripts / 2000 ms builds)
+- Research: `browser_subagent` with enumerated specific questions, not just a topic
+- Analysis: `grep_search` + `view_file` in rapid succession
+- Record dispatch timestamp per unit in status registry
+
+### 2.3 — Launch BACKGROUND units
+Same tool rules as 2.2. Set `schedule` timer for expected completion. Record timer ID in registry.
+
+### 2.4 — Stage SEQUENTIAL units
+Do not launch. Place in staged queue with dependency IDs. Dispatch only when all dependencies reach COMPLETE.
+
+### 2.5 — Status registry
+```
+DISPATCHED → RUNNING → COMPLETE | FAILED | BLOCKED
+```
+Log every transition with timestamp. Registry is single source of truth.
+
+**Example mid-run:**
+```
+api-oauth  COMPLETE  10:00:43  validation=PASS
+fe-avatar  COMPLETE  10:00:38  validation=PASS
+db-schema  RUNNING   dispatched=10:00:01
+fe-wire    STAGED    waiting_on=[api-oauth, fe-avatar, db-schema]
+```
+
+**Output:** Workers dispatched with timestamps; registry initialized; SEQUENTIAL units staged.
 
 ---
 
-### Phase 6: POST-MORTEM (Self-Improvement)
+## Phase 3: Monitor and Progress Sequential Units
 
-1. Review the terminal history for this session. Did we experience Terminal Thrashing (a command failing 2+ times before success)?
-2. Did the user explicitly correct a behavior or reject an action?
-3. If yes to either, extract the specific failure and the working fix.
-4. Append it as a strict IF/THEN constraint to `./project_heuristics.md`.
-5. If the heuristic is universally applicable across all projects, suggest the user run `/propose-os-upgrade`.
+### 3.1 — Do not poll
+Wait for notifications or timer fires. Polling wastes context and creates timing-dependent failures.
 
-**Output:** Updated heuristics file (if learning occurred).
+### 3.2 — On completion
+1. Mark COMPLETE with timestamp
+2. Collect output
+3. Run local acceptance criteria validation immediately (3.4)
+4. Check staged queue — dispatch any SEQUENTIAL unit whose dependencies are all COMPLETE
+
+### 3.3 — On failure
+Read full error output before classifying.
+
+| Type | Examples | Response |
+|---|---|---|
+| **Transient** | Network timeout, flaky test | Exponential backoff: 2 s then 8 s. Max 2 retries. |
+| **Config error** | Missing env var, wrong path | Fix root cause first, then retry. Never retry same misconfigured command. |
+| **Logic error** | Wrong output, failed assertion | No retry. Mark FAILED, document, flag for Phase 5. |
+
+If FAILED unit is a dependency of SEQUENTIAL units → mark those BLOCKED, escalate to user. Never silently skip.
+
+**Example registry failure entry:**
+```
+db-schema  FAILED  error="relation 'users' does not exist — wrong DB targeted"
+           type=Config  retries=0  action=Fix DATABASE_URL then retry
+fe-wire    BLOCKED  waiting_on=[db-schema]  escalated=true
+```
+
+### 3.4 — Local acceptance criteria validation (mandatory, per unit)
+Validate output against unit's acceptance criteria before synthesis or unblocking dependents. If unmet → treat as FAILED, apply 3.3. A unit with unmet criteria must never unblock SEQUENTIAL units or enter synthesis.
+
+**Output:** All workers COMPLETE/FAILED with reasons; local validation done per unit; SEQUENTIAL units progressed.
+
+---
+
+## Phase 4: Synthesize
+
+### 4.1 — Collect outputs
+- **Critical path FAILED unit:** halt synthesis for affected scope, escalate to user
+- **Non-critical FAILED unit:** document as explicit omission. Never silently skip.
+
+### 4.2 — Conflict resolution protocol
+1. **No overlap** → assemble directly
+2. **Additive overlap** (no line collision) → apply both, verify compiles/parses
+3. **Destructive overlap** (same lines differ) → diff against baseline, apply higher-priority change, annotate lower-priority as TODO with unit ID, log decision with reasoning
+4. **Schema/interface conflict** → BLOCK consuming worker, re-run against new contract before synthesis
+
+If step 3 or 4 cannot be resolved algorithmically → stop, show user a diff of both versions. Do not guess.
+
+**Example conflict log:**
+```
+CONFLICT: Header.tsx
+  fe-avatar: added <Avatar /> import line 3
+  fe-wire:   added <Avatar /> import line 3 + wired user prop line 21
+  resolution: applied fe-wire (superset — no information lost)
+```
+
+### 4.3 — Internal consistency check
+- All imports and cross-unit references resolve
+- No dead references (called but never produced)
+- No duplicate definitions (same symbol, route, or schema field)
+- All files from Phase 1 ownership table accounted for
+
+**Output:** Unified deliverable; conflict log; consistency verified.
+
+---
+
+## Phase 5: Evaluate
+
+### Stage 1 — Mechanical Verification
+Run all applicable checks. Skip only if genuinely not applicable (no TypeScript = skip tsc). Never skip for speed.
+
+| Check | Command |
+|---|---|
+| TypeScript | `npx tsc --noEmit` |
+| JS/TS lint | `npm run lint` or `npx eslint .` |
+| Python lint | `python -m ruff check` |
+| Python types | `python -m mypy .` |
+| Tests | `npm run test` or `python -m pytest` |
+| Build | `npm run build` |
+
+On failure: fix, re-run affected worker if needed, re-synthesize scope, re-run all Stage 1 checks from scratch before Stage 2.
+
+### Stage 2 — Reviewer Evaluation
+Pass to Reviewer agent with: original goal, all unit IDs + acceptance criteria, conflict log, FAILED/BLOCKED unit reasons.
+
+| Verdict | Action |
+|---|---|
+| **PASS** | Deliver to user |
+| **NEEDS_REVISION** | Return failing unit to its agent → fix → re-run Stage 1 + Stage 2 for that scope only |
+| **FAIL** | Escalate to user with full Reviewer findings. Do not deliver. |
+
+**Max 3 iterations.** After 3 without PASS → stop, deliver findings + current state, request user guidance.
+
+**Output:** Verified, Reviewer-approved deliverable — or documented escalation.
+
+---
+
+## Phase 6: Post-Mortem (Self-Improvement)
+Run after every session regardless of outcome.
+
+### 6.1 — Terminal thrashing audit
+Flag any command that failed 2+ times before succeeding. Note what failed and what fixed it.
+
+### 6.2 — Behavioral corrections audit
+Flag: user corrections, outputs that failed local validation on first attempt, conflicts requiring user escalation, SEQUENTIAL units blocked by dependency failure.
+
+### 6.3 — Extract and record
+For each flagged item: state failure precisely → state working fix → express as IF/THEN constraint.
+
+**Example:**
+```
+IF npm run build fails with "Cannot find module 'dotenv'"
+THEN run npm install before retrying — node_modules missing or stale
+```
+
+Append to `./project_heuristics.md`. Never overwrite existing constraints.
+
+### 6.4 — Promote universal heuristics
+If a constraint applies across all projects, suggest user run `/propose-os-upgrade`.
+
+**Output:** Updated `./project_heuristics.md` (if learning occurred).
+
+---
+
+## Sequential Fallback
+Use when async primitives unavailable or task has ≤ 2 units.
+
+1. Execute units in dependency order, one at a time
+2. Local acceptance validation after each unit (Phase 3.4)
+3. Conflict resolution after any overlapping unit (Phase 4.2)
+4. Run Phase 5 once after all units complete
+5. Run Phase 6 post-mortem
 
 ---
 
 ## Output Expectations
-
-- A numbered list of work units with their dispatch classifications
-- Status of each worker (completed / failed / retried)
-- The synthesized final output
-- Reviewer's evaluation verdict
-- Any follow-up work flagged
+Every run produces:
+- Work unit list: IDs, classifications, file ownership table, acceptance criteria
+- Dispatch log with timestamps
+- Per-unit local validation results (PASS/FAIL + criteria checked)
+- Worker status log (COMPLETE/FAILED/BLOCKED) with retry history
+- Synthesized deliverable with conflict log
+- Reviewer verdict and iteration count
+- Updated `./project_heuristics.md` (if applicable)
+- Any unresolved escalations with current state
 
 ---
 
-## Constraints
+## Constraints Reference
 
-- Maximum 4 concurrent background tasks
-- No two parallel workers may touch the same file
-- All workers must have defined acceptance criteria before dispatch
-- SEQUENTIAL units must not be dispatched until their dependencies complete
-- The Evaluator gate is mandatory -- no orchestrated output ships without review
+| Constraint | Value | Rationale |
+|---|---|---|
+| Max concurrent tasks | 4 | Limits context pressure and interleaving failures |
+| Max retries per worker | 2 | Forces root-cause analysis over blind retries |
+| Max evaluation iterations | 3 | Forces escalation over indefinite revision |
+| Parallel file exclusivity | Absolute | Eliminates race conditions and merge ambiguity |
+| Pre-dispatch checklist | Mandatory | Catches config errors before wasting compute |
+| Local acceptance validation | Per-unit, immediate | Catches failures at source not global review |
+| Conflict escalation | On unresolvable overlap | Never guess on destructive merge |
+| BLOCKED escalation | Mandatory | Never silently skip blocked work |
